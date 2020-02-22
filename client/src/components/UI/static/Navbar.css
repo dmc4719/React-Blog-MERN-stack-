@@ -1,0 +1,23 @@
+ul{
+    list-style: none;
+    display: block;
+    margin: auto;
+    padding: 10px;
+}
+li{
+    display: inline-block;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: 500;
+    color: white;
+    font-size: large;
+}
+li:hover{
+    color: royalblue;
+}
+.nav{
+    display:block;
+    text-align: center;
+    background-color: #3f51b5;
+    margin:0;
+}

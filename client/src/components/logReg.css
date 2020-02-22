@@ -1,0 +1,33 @@
+.cont{
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: #3f51b5;
+    padding: 100px;
+}
+
+
+.d-log {
+    margin: 100px 100px;
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: darkslateblue;
+    height: 500px;
+    
+}
+.d-log > input {
+    width: 300px;
+}
+.d-log> a, .d-log > button {
+    color: white !important;
+}
+

@@ -1,0 +1,102 @@
+
+.single-content {
+min-width: auto;
+padding: 10px;
+/* width: 900px; */
+overflow: hidden;
+color: darkslateblue !important;
+
+}
+
+.single-post {
+  min-height: 100%;
+  
+}
+
+.img-container > img{
+  display: flex;
+  max-height: 180px; 
+  margin:auto;
+  background-size: auto
+
+}
+
+
+.text-muted{
+  color:white !important;
+}
+
+.single-post  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    font-weight: bolder;
+    font-size: 25px;
+    color: darkslateblue !important;
+  }
+  .single-post  blockquote:before {
+    color: darkslateblue;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  .single-post  blockquote p {
+    display: inline;
+    color: darkslateblue;
+  }
+  .single_post_page{
+    height: 100%;
+   
+  }
+
+  .comment-box{
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .comment-box > textarea{
+    width:400px;
+    margin: 15px;
+    background-color: #EEE;
+  }
+  .comment-box > button{
+    margin-bottom: 15px;
+  }
+  .comments{
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    
+    width: 400px;
+    position: relative;
+    /* background-color: #EEE; */
+  }
+
+  .comment{
+    height: 80px;
+    width: 400px;
+    padding: 8px;
+    display:flex;
+    flex-direction: column;
+    border-radius: 6px;;
+    margin: 5px 0px;
+    float: left;
+    background-color: blueviolet;
+    color: white;
+    
+  }
+
+  .comment > p {
+    font-family: 'montserrat';
+    float: left;
+  }
+  .comment > p:nth-child(1){
+    font-size: 20px;
+  }
