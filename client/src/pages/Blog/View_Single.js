@@ -4,6 +4,9 @@ import rhtml from 'react-html-parser'
 import  './static/post.css'
 import {connect} from 'react-redux'
 import {Comment} from './../../store/actions/commentActions'
+import io from 'socket.io-client'
+const socketUrl = 'http://localhost:5000/'
+const socket =  io(socketUrl)
 
 export class View_Single extends Component {
     constructor(props) {
@@ -21,6 +24,7 @@ export class View_Single extends Component {
         this.onChange=this.onChange.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
         this.clearStateErrors = this.clearStateErrors.bind(this)
+        this.initSocket = this.initSocket.bind(this)
     }
     static getDerivedStateFromProps(nextProps,prevState){
         if(JSON.stringify(nextProps.comment.errors) !== JSON.stringify(prevState)){
@@ -60,6 +64,16 @@ export class View_Single extends Component {
         this.props.Comment({comment,post},this.props.history)
     }
 
+
+    initSocket = ()=> {
+      
+        socket.on('comments',comments =>{
+            
+            this.setState({comments})
+        } )
+
+    }
+   
    
     componentDidMount(){
         let id = this.props.match.params.post_id
@@ -74,12 +88,12 @@ export class View_Single extends Component {
             this.setState({post:post.data})
             }
            )
-
+            this.initSocket()
     }
 
  
     render() {
-       console.log(this.state.errors)
+      
         const {post,comments} = this.state
                      const comm = comments.map((com)=> <div key={com._id} className="comment"><p >{com.user.name} </p>
                      <p>{com.comment}</p>

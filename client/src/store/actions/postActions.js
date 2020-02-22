@@ -65,8 +65,8 @@ export const delete_Post = (id,history) => dispatch => {
 }
 
 
-export const update_Post = (id,history) => dispatch => {
-  Axios.put('/api/auth/posts/update_post?id=?'+id)
+export const update_Post = (postInfo,history) => dispatch => {
+  Axios.put('/api/auth/posts/update_post?id=?'+postInfo.postId, postInfo)
   .then(json => {
     dispatch({
       type: Types.UPDATE_POST,

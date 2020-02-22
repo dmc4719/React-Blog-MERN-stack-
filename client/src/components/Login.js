@@ -42,7 +42,7 @@ export class Login extends Component {
         if(this.props.auth.isAuthenticated){
             return <Redirect to='/'   />
         }
-        const style={display:"flex",verticalAlign: "middle",}
+        
        
         return (
             <div className=" cont "  >

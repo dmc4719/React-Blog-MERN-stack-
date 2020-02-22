@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import './static/blog.css'
-import {delete_Post} from './../../store/actions/postActions'
+import {delete_Post,update_Post} from '../../store/actions/postActions'
 import rhtml from 'react-html-parser'
 import io from 'socket.io-client'
 const socketUrl = 'http://localhost:5000/'
@@ -71,7 +71,7 @@ export class view_Posts extends Component {
             
             <div style={{ display: "inline-block" }}>
                 <small className="text-muted mx-2">Written By {post.user.name}</small> 
-                <p style={{cursor:"pointer",display: "inline-block"}} onClick={()=> this.onUpdateHandler(post._id)}> + </p> 
+                <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} > + </p> </Link>
                 </div>
             <div className="text text-center content">{rhtml(post.content)}</div>
               
@@ -105,4 +105,4 @@ export class view_Posts extends Component {
             auth: state.auth
         })
 
-export default connect(mapStateToProps,{delete_Post})(view_Posts)
+export default connect(mapStateToProps,{delete_Post,update_Post})(view_Posts)

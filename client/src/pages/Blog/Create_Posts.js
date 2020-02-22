@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {create_Post} from '../../store/actions/postActions'
-import CKEditor from '@ckeditor/ckeditor5-react'
-import classicEditor from '@ckeditor/ckeditor5-build-classic'
+
 import Axios from 'axios'
 import './static/create_post.css'
 

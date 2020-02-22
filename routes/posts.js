@@ -17,7 +17,7 @@ router.get('/',viewPosts);
 router.post('/create_post',authenticate,create_Post)
 router.delete('/delete_Post',authenticate,deletePost)
 router.get('/:id',viewSinglePost)
-router.delete('/update_Post/:id',authenticate,updatePost)
+router.put('/update_Post/',authenticate,updatePost)
 
  
 const storage = multer.diskStorage({
@@ -67,6 +67,24 @@ router.post('/upload_post_image', upload.single('postImage'), (req, res, next) =
     })
     
 
+
+    router.post('/update_post_image', upload.single('postImage'), (req, res, next) => {
+    
+        if(req.file==undefined){
+            console.log('no file found')
+           return res.status(400).json({error: "no file selected"})
+        }
+      console.log(req.user)
+            const url = req.protocol + '://' + req.get('host')
+            data= url + '/public/posts_Images/' + req.file.filename
+            try {
+                res.status(201).json({postImage: data})
+            } catch (error) {
+                res.status(500).json({error});
+            }
+            next()
+            
+        })
 
 
 

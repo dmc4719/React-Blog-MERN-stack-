@@ -75,8 +75,9 @@ module.exports = {
 
 
     updatePost(req,res){
-        post = req.query 
-        Post.findByIdAndUpdate({_id: req.query.id},{$set: {post}})
+        console.log(req.body)
+        const { title, content, image , postId} = req.body
+        Post.findByIdAndUpdate({_id: postId},{$set: {title: title,content: content,image: image}})
         .then(update => res.status(200).json({message: "Update successful",update}))
         .catch(error=> res.status(400).res.json(error))
     }
