@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Axios from 'axios'
 import {connect} from 'react-redux'
 import {update_Post} from './../../store/actions/postActions'
+import QuillEditor from './../../components/editor/QuillEditor'
 
 export class Update_Post extends Component {
     constructor(props) {
@@ -12,25 +13,46 @@ export class Update_Post extends Component {
              title: '',
              content: '',
              errors: {},
-             postImage: ''
+             postImage: '',
+             files: ''
         }
-        this.onFileChange = this.onFileChange.bind(this)
+        this.onFilesChange = this.onFilesChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
-        this.inputChangeHandler = this.inputChangeHandler.bind(this)
+        this.titleChangeHandler = this.titleChangeHandler.bind(this)
+        this.onEditorChange = this.onEditorChange.bind(this)
+        this.onFileChange = this.onFileChange.bind(this);
     }
 
-    inputChangeHandler(e){
-        console.log(e.target.value)
+    titleChangeHandler(e){
+        
         this.setState({
-            [e.target.name] : e.target.value
+          title : e.target.value
         })
     }
 
+    onEditorChange = (value) => {
+        this.setState({
+            content: value
+        })
+    }
+
+
+    onFilesChange(files){
+        console.log(`from onFilesChange ${files}`)
+        this.setState({
+            files: files
+        })
+        
+    }
     onFileChange(e){
         this.setState({
             postImage: e.target.files[0]
         })
     }
+
+   
+
+  
     
     onSubmit(e){
         e.preventDefault()
@@ -39,7 +61,7 @@ export class Update_Post extends Component {
         let image = ''
         const formData = new FormData()
         formData.append('postImage', this.state.postImage)
-        Axios.post("/api/auth/posts/update_post_image",formData,{})
+        Axios.post("/api/auth/posts/upload_post_image",formData,{})
         .then(json=> {
             image = json.data.postImage
             this.props.update_Post({title,content,image,postId},this.props.history)
@@ -59,11 +81,15 @@ export class Update_Post extends Component {
                 <div className="danger-link">{this.state.error? <p>{this.state.error.error}</p>:''}</div>
                 
                 <form onSubmit={this.onSubmit} >
-                <input onChange={this.inputChangeHandler} className="form-control" name="title" placeholder="Title"/>
-                <textarea  name ="content" className="form-control"  onChange={this.inputChangeHandler}  placeholder="write some text"/>
+                <input onChange={this.titleChangeHandler} className="form-control" name="title" placeholder="Title"/>
+                
                
                 <input type="file"  onChange={this.onFileChange}/>
-                
+                <QuillEditor
+                placeholder={"Start Posting Something"}
+                onEditorChange={this.onEditorChange}
+                onFilesChange={this.onFilesChange}
+                 />
                 <button type="submit" className="btn btn-primary m-4">Create Post</button>
                 <Link to='/posts'><button  className="btn btn-primary m-4">Go back to Posts</button></Link>
                 </form>

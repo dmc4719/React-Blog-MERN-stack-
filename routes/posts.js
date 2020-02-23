@@ -10,7 +10,7 @@ const path = require("path")
 const uuidv4 = require('uuid/v4')
 const mongoose = require('mongoose')
 
-const DIR = './public/posts_Images';
+const DIR = './public/uploads';
       
 
 router.get('/',viewPosts);
@@ -19,20 +19,40 @@ router.delete('/delete_Post',authenticate,deletePost)
 router.get('/:id',viewSinglePost)
 router.put('/update_Post/',authenticate,updatePost)
 
- 
-const storage = multer.diskStorage({
+
+let storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        if(!file){res.json({error: "no file selected"})}
         cb(null, DIR);
     },
     filename: (req, file, cb) => {
-        if(!file){res.json({error: "no file selected"})}
-        const fileName = file.originalname.toLowerCase().split(' ').join('-');
-        cb(null, uuidv4() + '-' + fileName)
+        cb(null, `${Date.now()}_${file.originalname}`);
+    },
+    fileFilter: (req, file, cb) => {
+        const ext = path.extname(file.originalname)
+        if (ext !== '.jpg' && ext !== '.png' && ext !== '.mp4') {
+            return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
+        }
+        cb(null, true)
     }
 });
 
-var upload = multer({
+
+const upload = multer({ storage: storage }).single("file");
+
+//For Quill Editor Upload files
+router.post("/uploadfiles", (req, res) => {
+    upload(req, res, err => {
+        if (err) {
+            return res.json({ success: false, err });
+        }
+        console.log(res.req.file.path)
+        return res.json({ success: true, url: res.req.file.path, fileName: res.req.file.filename });
+    });
+});
+
+
+//upload function for Cover Image Upload/Update
+var up = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
         if(!file){res.json({error: "no file selected"})}
@@ -47,36 +67,17 @@ var upload = multer({
 });
 
 
-
-router.post('/upload_post_image', upload.single('postImage'), (req, res, next) => {
-    
-    if(req.file==undefined){
-        console.log('no file found')
-       return res.status(400).json({error: "no file selected"})
-    }
-  console.log(req.user)
-        const url = req.protocol + '://' + req.get('host')
-        data= url + '/public/posts_Images/' + req.file.filename
-        try {
-            res.status(201).json({postImage: data})
-        } catch (error) {
-            res.status(500).json({error});
-        }
-        next()
-        
-    })
-    
-
-
-    router.post('/update_post_image', upload.single('postImage'), (req, res, next) => {
+    router.post('/upload_post_image', up.single('postImage'), (req, res, next) => {
     
         if(req.file==undefined){
             console.log('no file found')
            return res.status(400).json({error: "no file selected"})
         }
       console.log(req.user)
+
+
             const url = req.protocol + '://' + req.get('host')
-            data= url + '/public/posts_Images/' + req.file.filename
+            data= url + '/public/uploads/' + req.file.filename
             try {
                 res.status(201).json({postImage: data})
             } catch (error) {
@@ -87,6 +88,18 @@ router.post('/upload_post_image', upload.single('postImage'), (req, res, next) =
         })
 
 
+
+
+
+
+
+
+        
+       
+
+
+
+       
 
 
 
