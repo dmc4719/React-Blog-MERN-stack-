@@ -23,10 +23,9 @@ const userSchema = new schema({
         type: Number,
         default: 0
     },
-    post: [{
-        type: schema.Types.ObjectId,
-        ref: 'Posts'
-    }]
+    image:{
+        type: String
+    }
     
 })
 

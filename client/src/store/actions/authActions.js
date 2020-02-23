@@ -38,6 +38,34 @@ export const login = (user,history) => dispatch => {
 
 }
 
+export const register = (user, history) => dispatch => {
+    Axios.post('/api/auth/register',user)
+    .then(user=>{
+        console.log(user)
+       
+        dispatch({
+            type: Types.CREATE_USER,
+            payload: {
+                createdUser:user
+            }
+        })
+        history.push('/')
+    })
+    .catch(error=>{
+        if(error){
+            console.log(error.response.data)
+            dispatch({
+                type: Types.USERS_ERROR,
+                payload: {
+                    error: error.response.data
+                }
+            })
+        }
+        
+        
+    })
+}
+
 export const logout = history => {
     localStorage.removeItem('auth_token')
     setAuthToken()

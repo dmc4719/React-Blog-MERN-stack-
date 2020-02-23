@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import './static/blog.css'
 import {delete_Post,update_Post} from '../../store/actions/postActions'
 import rhtml from 'react-html-parser'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import io from 'socket.io-client'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
@@ -67,12 +69,15 @@ export class view_Posts extends Component {
             <div >
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mx-2 title" >{post.title}</h5></Link>
 
-                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="" onClick={()=> this.onDeleteHandler(post._id)}>X</p> :''}
+                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="" onClick={()=> this.onDeleteHandler(post._id)}>
+                    <FontAwesomeIcon icon={['fas','trash']} style={{ color: "white"}}/></p> : ''}
                 </div>
             
             <div style={{ display: "inline-block" }}>
                 <small className="text-muted mx-2">Written By {post.user.name}</small> 
-                <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} > + </p> </Link>
+                {this.props.auth.user._id === post.user._id?
+                <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
+                    <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
             <div className="text text-center content">{rhtml(post.content)}</div>
               

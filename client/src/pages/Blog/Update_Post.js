@@ -4,6 +4,7 @@ import Axios from 'axios'
 import {connect} from 'react-redux'
 import {update_Post} from './../../store/actions/postActions'
 import QuillEditor from './../../components/editor/QuillEditor'
+import './static/blog.css'
 
 export class Update_Post extends Component {
     constructor(props) {
@@ -80,7 +81,7 @@ export class Update_Post extends Component {
     render() {
         
         return (
-            <div className="container text-center">
+            <div className="text-center  main-div m-4">
                  
                 <div className="create_post">
                 <h3 className="m-4">Create a Blog post</h3>
@@ -90,7 +91,7 @@ export class Update_Post extends Component {
                 <input onChange={this.titleChangeHandler} className="form-control" name="title" placeholder="Title"/>
                 
                
-                <input type="file"  onChange={this.onFileChange}/>
+                <input className="m-4" type="file"  onChange={this.onFileChange}/>
                 <QuillEditor
                 placeholder={"Start Posting Something"}
                 onEditorChange={this.onEditorChange}

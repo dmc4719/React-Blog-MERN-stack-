@@ -19,6 +19,7 @@ const registerValidator = user => {
     }else if((user.pass).length < 6) {
         error.pass = "Password should contain more than 6 characters"
     }
+   
 
     return {
         error,

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {create_Post} from '../../store/actions/postActions'
 import QuillEditor from './../../components/editor/QuillEditor'
 import Axios from 'axios'
-import './static/create_post.css'
+import './static/blog.css'
 
 
 export class Create_Posts extends Component {
@@ -87,13 +87,6 @@ export class Create_Posts extends Component {
         })
     }
 
-
-    
-    onFileChange(e){
-        this.setState({
-            postImage: e.target.files[0]
-        })
-    }
 
     
     render() {

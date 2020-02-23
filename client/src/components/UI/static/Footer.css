@@ -18,9 +18,11 @@ footer>div{
 display:flex;    
 flex-direction: column;
 color: white;
-margin: 20px 50px;
-width: 200px;
+/* margin: 20px 80px; */
+margin:20px;
+width: 300px;
 text-align: center;
+align-self: start;
 
 }
 footer>div:nth-child(1)>ul{
@@ -40,4 +42,13 @@ footer li {
 footer ul {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+ 
+}
+
+footer li {
+    display: flex;
+    flex-direction: row;
 }

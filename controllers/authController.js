@@ -36,11 +36,11 @@ module.exports = {
 
             Register(req,res){
 
-                const {email,pass,name} = req.body
+                const {email,pass,name,image} = req.body
                 let validate = registerValidator({name,email,pass})
                 let error = validate.error
                 if(!validate.isValid){
-                    res.json(error)
+                    res.status(400).json(error)
                 }
                 else{
 
@@ -55,6 +55,7 @@ module.exports = {
                             let user = new User()
                             user.email = email;
                             user.name = name;
+                            user.image = image;
                             let hash = bcrypt.hashSync(pass,10)
                             user.pass = hash;
                             user.save().then(User => res.json({User,success:true})).catch(error=> res.status(400).json(error))

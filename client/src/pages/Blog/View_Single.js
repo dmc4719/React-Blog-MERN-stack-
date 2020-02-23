@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import rhtml from 'react-html-parser'
-import  './static/post.css'
+import  './static/blog.css'
 import {connect} from 'react-redux'
 import {Comment} from './../../store/actions/commentActions'
+import Moment from 'react-moment';
 import io from 'socket.io-client'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
@@ -18,7 +19,8 @@ export class View_Single extends Component {
              comment: '',
              comments: [],
              error:'',
-             errors: {}
+             errors: {},
+             postUser: {}
         }
       
         this.onChange=this.onChange.bind(this)
@@ -85,7 +87,10 @@ export class View_Single extends Component {
                 
                 this.setState({comments:comments.data})
                  })
+                 
             this.setState({post:post.data})
+            this.setState({postUser: post.data.user})
+            console.log(post.data.timestamps)
             }
            )
             this.initSocket()
@@ -94,9 +99,13 @@ export class View_Single extends Component {
  
     render() {
       
-        const {post,comments} = this.state
-                     const comm = comments.map((com)=> <div key={com._id} className="comment"><p >{com.user.name} </p>
-                     <p>{com.comment}</p>
+        const {post,comments,postUser} = this.state
+                     const comm = comments.map((com)=> <div key={com._id} className="comment_div">
+                         <img src={com.user.image} alt="user"/>
+                         <div className="comment"><p >{com.user.name} </p>
+                     <p>{com.comment}</p></div>
+                         
+                         
                      </div>)
        
         
@@ -108,7 +117,9 @@ export class View_Single extends Component {
                     <span className="img-container"> 
                     <img src={post.image} alt="" />
                     </span>
-                <h3 className="mt-4">{post.title}</h3>
+                    <h5 className="m-2">Written By {postUser.name} </h5>
+                    <Moment>{post.timestamps}</Moment>
+                <h1 className="mt-4 title">{post.title}</h1>
                <div style={{}} className=" container single-content mb-4">{rhtml(post.content)}
                
                </div>
@@ -123,8 +134,9 @@ export class View_Single extends Component {
                 
                 <div className=" comment-box ">
 
-                    <p style={{marginTop:"10px"}}>Post your comment</p>
+                    <h5 style={{marginTop:"20px",marginBottom:"0px"}}>Post your comment</h5>
                     {this.state.errors? <p style={{color: "red",fontWeight: "bold",fontFamily:'montserrat'}}>{this.state.errors.error}</p> :''}
+                    
                     <textarea onClick={this.clearStateErrors} className="form-control" value={this.state.comment} name="comment" onChange={this.onChange}/>
                     <button  onClick={this.onSubmit} className="btn btn-outline-primary">Comment!</button>
                 </div>

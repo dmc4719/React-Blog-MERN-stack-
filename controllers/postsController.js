@@ -52,6 +52,7 @@ module.exports = {
     viewSinglePost(req,res){
         console.log(req.params.id)
         Post.findOne({_id: req.params.id})
+        .populate('user')
         .then(post=> {
             if(post){
                 res.json(post) 

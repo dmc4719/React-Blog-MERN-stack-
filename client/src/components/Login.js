@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Link,Redirect} from 'react-router-dom'
 import {login} from './../store/actions/authActions'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import './logReg.css'
  
 export class Login extends Component {
@@ -14,24 +15,13 @@ export class Login extends Component {
              user: {},
              error: {}
         }
-        setTimeout(()=>{
-            this.setState({
-                error:''
-            })
-            
-        },1000)
+       
         this.inputChangeHandler = this.inputChangeHandler.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
-        this.clearState = this.clearState(this)
+       
     }
 
 
-  clearState(){
-      console.log('here')
-    this.setState({
-        error: ''
-    })
-    }
     static getDerivedStateFromProps(nextProps,prevState){
         if(JSON.stringify(nextProps.auth.errors) !== JSON.stringify(prevState)){
             
@@ -41,7 +31,9 @@ export class Login extends Component {
         }
     }
 
-   
+    
+
+ 
     inputChangeHandler(e){
         e.preventDefault();
         this.setState({
@@ -60,18 +52,31 @@ export class Login extends Component {
             return <Redirect to='/'   />
         }
         console.log(this.state.error)
-       
+     
         return (
             <div className=" cont "  >
                 <div className="d-log">
+                    <div className="buttons">
+
+
+                        <button className="S-in active auth">Sign-In</button>
+                    <Link to="/register"><button className="S-up auth">Sign-Up</button></Link>
+                    </div>
                
                 <h2 className="m-2 ">Sign In</h2>
                 
-                    <input name="email" placeholder="email" className="form-control m-2 "  onChange={this.inputChangeHandler}/>
+                    <input name="email" placeholder="Email" className="form-control m-2 "   onChange={this.inputChangeHandler}/>
                    {this.state.error.email? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.email}</small>:''}
-                    <input name="pass" placeholder="pass" className="form-control m-2 " onChange={this.inputChangeHandler}/>
+                    <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
                     <Link to="/register"><small style={{marginLeft: "-150px"}} onClick={this.clearState}>Don't Have an account?</small></Link>
+                    <h5 className="mt-3">Or</h5>
+                    <div className="icons m-3">
+                    <FontAwesomeIcon icon={['fab','facebook']} size="lg" className="mx-2 icon"/>
+                    <FontAwesomeIcon icon={['fab','google']} size="lg" className="mx-2 icon"/>
+                    <FontAwesomeIcon icon={['fab','github']} size="lg" className="mx-2 icon"/>
+                    </div>
+                    
                     <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Login</button>
                 </div>
                 
