@@ -23,6 +23,11 @@ width: 200px;
 text-align: center;
 
 }
+footer>div:nth-child(1)>ul{
+    display:flex;
+    flex-direction: row;
+    margin:0;
+}
 footer h5{
     font-size: 22px;
 }

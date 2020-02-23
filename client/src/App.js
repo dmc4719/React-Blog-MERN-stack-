@@ -12,7 +12,11 @@ import View_Single from './pages/Blog/View_Single';
 import Footer from './components/UI/Footer';
 import Navbar from './components/UI/Navbar';
 import Update_Post from './pages/Blog/Update_Post'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab} from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
+library.add(fab, fas)
 function App() {
   return (
     <BrowserRouter>

@@ -37,8 +37,13 @@
     overflow: hidden;
     padding: 5px;
 }
-.post .content *{
- font-size: x-large;
+.post .content h2, h3, h1{
+ display:none;
+
+}
+.post .content p{
+    display: block;
+    margin:0;
 }
 
 .text{ 
