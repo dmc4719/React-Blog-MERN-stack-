@@ -62,8 +62,7 @@ export class Create_Posts extends Component {
         })
 
     }
-    titleChangeHandler(e){
-        
+    titleChangeHandler(e){   
         this.setState({
           title : e.target.value
         })
@@ -76,15 +75,13 @@ export class Create_Posts extends Component {
     }
 
 
-    onFilesChange(files){
-        console.log(`from onFilesChange ${files}`)
+    onFilesChange(files){       
         this.setState({
             files: files
         })
         
     }
     onFileChange(e){
-        console.log(e.target.files[0])
         this.setState({
             postImage: e.target.files[0]
         })

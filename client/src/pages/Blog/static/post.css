@@ -2,10 +2,30 @@
 .single-content {
 min-width: auto;
 padding: 10px;
-/* width: 900px; */
+
 overflow: hidden;
 color: darkslateblue !important;
 
+}
+
+
+.single-content p,blockquote,h2{
+  font-family: 'montserrat';
+}
+.single-content img{
+  max-width: 600px;
+}
+.single-content pre {
+  width: 500px;
+  
+  background: black;
+  padding : 5px;
+  color: yellowgreen;
+}
+.single-content{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .single-post {
@@ -13,12 +33,24 @@ color: darkslateblue !important;
   
 }
 
+
 .img-container > img{
-  display: flex;
-  max-height: 180px; 
-  margin:auto;
+  max-width: 1000px;
+  /* width: 60%; */
+  height:auto;
+  
+  /* margin:auto; */
   background-size: auto
 
+}
+@media only screen and (max-width: 736px){
+  .img-container > img{
+    width: 100%;
+    height: auto;
+  }
+  .img-container{
+    width: 100%;
+  }
 }
 
 
@@ -53,6 +85,29 @@ color: darkslateblue !important;
    
   }
 
+  .single-content > pre{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  /*Comments*/
+
   .comment-box{
 
     display: flex;
@@ -79,6 +134,7 @@ color: darkslateblue !important;
     /* background-color: #EEE; */
   }
 
+
   .comment{
     height: 80px;
     width: 400px;
@@ -94,7 +150,7 @@ color: darkslateblue !important;
   }
 
   .comment > p {
-    font-family: 'montserrat';
+    font-family: 'montserrat',sans-serif;
     float: left;
   }
   .comment > p:nth-child(1){

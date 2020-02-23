@@ -57,6 +57,7 @@ export class view_Posts extends Component {
    
     
     render() {
+        
         var check = false;
         
         const posts = this.state.posts
@@ -88,6 +89,7 @@ export class view_Posts extends Component {
             <div className="text-center wr-posts">
                 
                 <h3 className="m-4">Blog Posts</h3>
+                {this.state.posts.length ? '':<h5 className="m-4">No Post Found!</h5> }
                 <div className="">
                 {pp}
                 </div>

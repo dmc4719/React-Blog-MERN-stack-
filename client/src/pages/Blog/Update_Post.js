@@ -10,6 +10,7 @@ export class Update_Post extends Component {
         super(props)
     
         this.state = {
+             post: {},
              title: '',
              content: '',
              errors: {},
@@ -38,7 +39,6 @@ export class Update_Post extends Component {
 
 
     onFilesChange(files){
-        console.log(`from onFilesChange ${files}`)
         this.setState({
             files: files
         })
@@ -50,7 +50,13 @@ export class Update_Post extends Component {
         })
     }
 
-   
+   componentWillMount(){
+    const postId = this.props.match.params.post_id
+       Axios.get(`/api/auth/posts/${postId}`)
+       .then(json => this.setState({
+           post: json
+       }))
+   }
 
   
     
