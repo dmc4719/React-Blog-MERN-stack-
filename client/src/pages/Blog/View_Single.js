@@ -5,7 +5,9 @@ import  './static/blog.css'
 import {connect} from 'react-redux'
 import {Comment} from './../../store/actions/commentActions'
 import Moment from 'react-moment';
+import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
+import { message } from 'antd'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
 
@@ -20,7 +22,8 @@ export class View_Single extends Component {
              comments: [],
              error:'',
              errors: {},
-             postUser: {}
+             postUser: {},
+             isLoading: true
         }
       
         this.onChange=this.onChange.bind(this)
@@ -88,9 +91,10 @@ export class View_Single extends Component {
                 this.setState({comments:comments.data})
                  })
                  
-            this.setState({post:post.data})
-            this.setState({postUser: post.data.user})
-            console.log(post.data.timestamps)
+            this.setState({
+                post:post.data,
+                postUser:post.data.user,
+                isLoading:false})
             }
            )
             this.initSocket()
@@ -99,20 +103,27 @@ export class View_Single extends Component {
  
     render() {
       
-        const {post,comments,postUser} = this.state
+        const {post,comments,postUser,isLoading} = this.state
                      const comm = comments.map((com)=> <div key={com._id} className="comment_div">
                          <img src={com.user.image} alt="user"/>
-                         <div className="comment"><p >{com.user.name} </p>
+                         <div className="comment"><h5 >{com.user.name} - (<Moment format="YYYY/MM/DD">{com.timestamps}</Moment>)</h5>
                      <p>{com.comment}</p></div>
                          
                          
                      </div>)
+
+        if(isLoading){
+            message.loading('Loading',0)
+        } else{
+            
+            message.success('Post Loaded',1)
+        }          
        
         
         return (
             
-            <div className="single_post_page">
-                <div className="single-post text-center p-4 ">
+            <div className="single_post_page ">
+                <div className="single-post text-center mt-4 ">
                
                     <span className="img-container"> 
                     <img src={post.image} alt="" />
@@ -120,26 +131,31 @@ export class View_Single extends Component {
                     <h5 className="m-2">Written By {postUser.name} </h5>
                     <Moment>{post.timestamps}</Moment>
                 <h1 className="mt-4 title">{post.title}</h1>
-               <div style={{}} className=" container single-content mb-4">{rhtml(post.content)}
+               <div style={{}} className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(post.content)}
                
                </div>
                
                 </div>
               
-                <div className="comments" >
+                <div className="comments mb-4 " >
                     <h3 style={{color: "darkslategray",fontSize: "21px"}}>COMMENTS :- </h3>
                     
                 {comm}
                 </div>
+
+                {this.props.auth.isAuthenticated? 
                 
                 <div className=" comment-box ">
 
-                    <h5 style={{marginTop:"20px",marginBottom:"0px"}}>Post your comment</h5>
-                    {this.state.errors? <p style={{color: "red",fontWeight: "bold",fontFamily:'montserrat'}}>{this.state.errors.error}</p> :''}
-                    
-                    <textarea onClick={this.clearStateErrors} className="form-control" value={this.state.comment} name="comment" onChange={this.onChange}/>
-                    <button  onClick={this.onSubmit} className="btn btn-outline-primary">Comment!</button>
-                </div>
+                <h5 style={{marginTop:"30px",marginBottom:"0px"}}>Post your comment</h5>
+                {this.state.errors? <p style={{color: "red",fontWeight: "bold",fontFamily:'montserrat'}}>{this.state.errors.error}</p> :''}
+                
+                <textarea onClick={this.clearStateErrors} className="form-control" value={this.state.comment} name="comment" onChange={this.onChange}/>
+                <button  onClick={this.onSubmit} className="btn btn-outline-primary">Comment!</button>
+            </div>:<Link to="/login"><h5 style={{textAlign:"center", marginBottom: "20px"}}>Login to Comment!</h5></Link>
+            }
+                
+                
                 
             </div>
         )

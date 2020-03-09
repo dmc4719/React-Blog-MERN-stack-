@@ -8,9 +8,17 @@ const __ISMSIE__ = navigator.userAgent.match(/Trident/i) ? true : false;
 // Quill.register('modules/clipboard', PlainClipboard, true);
 
 const QuillClipboard = Quill.import('modules/clipboard');
+var Url =''
+if(window.location.host.includes('localhost')){
+   Url = 'http://localhost:5000'
+}
+else{
+   Url = 'https://powerful-garden-71525.herokuapp.com'
+}
 
 class Clipboard extends QuillClipboard {
 
+  
     getMetaTagElements = (stringContent) => {
         const el = document.createElement('div');
         el.innerHTML = stringContent;
@@ -128,7 +136,7 @@ class FileBlot extends BlockEmbed {
         prefixTag.innerText = "첨부파일 - ";
 
         const bTag = document.createElement('b');
-        //위에 첨부파일 글자 옆에  파일 이름이 b 태그를 사용해서 나온다.
+       
         bTag.innerText = value;
 
         const linkTag = document.createElement('a');
@@ -136,7 +144,7 @@ class FileBlot extends BlockEmbed {
         linkTag.setAttribute("target", "_blank");
         linkTag.setAttribute("className", "file-link-inner-post");
         linkTag.appendChild(bTag);
-        //linkTag 이런식으로 나온다 <a href="btn_editPic@3x.png" target="_blank" classname="file-link-inner-post"><b>btn_editPic@3x.png</b></a>
+        
 
         const node = super.create();
         node.appendChild(prefixTag);
@@ -222,10 +230,7 @@ class QuillEditor extends React.Component {
 
     handleChange = (html) => {
         console.log('html', html)
-        // https://youtu.be/BbR-QCoKngE
-        // https://www.youtube.com/embed/ZwKhufmMxko
-        // https://tv.naver.com/v/9176888
-        // renderToStaticMarkup(ReactHtmlParser(html, options));
+       
 
         this.setState({
             editorHtml: html
@@ -234,7 +239,7 @@ class QuillEditor extends React.Component {
         });
     };
 
-    // I V F P들을  눌렀을떄 insertImage: this.imageHandler로 가서  거기서 inputOpenImageRef를 클릭 시킨다. 
+    
     imageHandler = () => {
         this.inputOpenImageRef.current.click();
     };
@@ -270,6 +275,7 @@ class QuillEditor extends React.Component {
 
                         let range = quill.getSelection();
                         let position = range ? range.index : 0;
+
 
                         quill.insertEmbed(position, "image", { src: "http://localhost:5000/" + response.data.url, alt: response.data.fileName });
                         quill.setSelection(position + 1);
@@ -410,7 +416,7 @@ class QuillEditor extends React.Component {
         syntax: false,
         toolbar: {
             container: "#toolbar",
-            //id ="toorbar"는  그 위에 B I U S I V F P 이거 있는 곳이다. 
+             
             handlers: {
                 insertImage: this.imageHandler,
                 insertVideo: this.videoHandler,

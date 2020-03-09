@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Post = require('./../models/Posts')
 const multer = require('multer')
 const uuidv4 = require('uuid/v4')
-
+const fs = require('fs')
 
 
 
@@ -67,11 +67,13 @@ module.exports = {
     deletePost(req,res){
         Post.findByIdAndDelete({_id: req.query.id})
         .then(json => {
+            console.log(json)
+            
             res.json({
                 deleted_post : json,
             })
         })
-        .catch(error=> res.status(401).json(error))
+        .catch(error=> res.status(400).json(error))
     },
 
 

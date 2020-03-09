@@ -7,6 +7,7 @@ import rhtml from 'react-html-parser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import io from 'socket.io-client'
+import { message } from 'antd'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
 
@@ -22,7 +23,8 @@ export class view_Posts extends Component {
              posts:[],
              isloading: true,
              user: {},
-             socket: {}
+             socket: {},
+             isLoading: true
         }
         this.onDeleteHandler = this.onDeleteHandler.bind(this)
         this.initSocket = this.initSocket.bind(this)
@@ -41,12 +43,13 @@ export class view_Posts extends Component {
 
 
     initSocket = ()=> {
-        socket.on('connection',() => {
-            this.setState({socket})
-        })
+        // socket.on('connection',() => {
+        //     this.setState({socket})
+        // })
         socket.on('posts',posts =>{
             console.log(posts)
-            this.setState({posts})
+            
+            this.setState({posts,isLoading:false})
         } )
 
     }
@@ -59,10 +62,18 @@ export class view_Posts extends Component {
    
     
     render() {
+        const {posts,isLoading} = this.state
+
+        if(isLoading){
+            message.loading('Loading')
+        }
+        else{
+            message.success('Posts Loaded',1)
+        }
         
         var check = false;
         
-        const posts = this.state.posts
+        
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
             <span className="thumbnail"><img className="p-img mb-2"  src={post.image} alt="nothing"/></span>
 

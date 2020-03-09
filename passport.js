@@ -31,7 +31,7 @@ module.exports = (userType,passport) => {
         else if(userType==="admin"){
             Admin.findOne({_id: payload._id})
             .then(admin => {
-                if(!user) {
+                if(!admin) {
                     return done(null,false)
                 }
                 else {

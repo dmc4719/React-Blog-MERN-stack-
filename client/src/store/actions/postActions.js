@@ -1,14 +1,13 @@
 import Axios from 'axios'
 import * as Types from './types'
-// import io from 'socket.io-client'
-// const socketUrl = 'http://localhost:5000'
+import {message} from 'antd'
 
 
 export const create_Post = (post,history,user) => dispatch => {
     Axios.post('/api/auth/posts/create_post',{post,user})
        
         .then(posts => {
-         
+          
           
           dispatch({
             type: Types.CREATE_POST,
@@ -18,8 +17,12 @@ export const create_Post = (post,history,user) => dispatch => {
             }
 
           })
-         
+        message.success('Post Created!')
+         setTimeout(()=>{
           history.push('/posts')
+         },1000
+         )
+          
         })
 
         .catch(error=> {
@@ -46,9 +49,12 @@ export const delete_Post = (id,history) => dispatch => {
       }
       
     })
+    message.success('Post Successfully Deleted!')
     
+    setTimeout(()=> {
+      window.location.reload()
+    }, 2000)
     
-    history.go('/posts')
     
   })
 

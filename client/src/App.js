@@ -15,9 +15,14 @@ import Update_Post from './pages/Blog/Update_Post'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab} from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { message } from 'antd';
 
 library.add(fab, fas)
 function App() {
+
+  message.config({
+    maxCount: 1
+  })
   return (
     <BrowserRouter>
     <div className="wrapper" >

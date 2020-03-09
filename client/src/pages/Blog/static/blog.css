@@ -230,7 +230,7 @@
         border-radius: 6px;;
         margin: 5px auto;
         float: left;
-        background-color: blueviolet;
+        
         color: white;
         
       }
@@ -248,11 +248,21 @@
       .comment > p {
         font-family: 'montserrat',sans-serif;
         float: left;
+        background-color: blueviolet;
+        padding: 5px;
+        border-radius: 6px;
       }
-      .comment > p:nth-child(1){
-        font-size: 20px;
+      .comment >h5{
+        color:darkslateblue;
+        font-size: 15px;
       }
 
+      a{
+        color: darkslategray
+      }
+      a:hover{
+        text-decoration: none;
+      }
 
 
       

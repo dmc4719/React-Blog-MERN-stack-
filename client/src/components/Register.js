@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {register} from './../store/actions/authActions'
 import Axios from 'axios'
-
+import logo from './../logo.svg'
 export class Register extends Component {
 
 
@@ -73,6 +73,7 @@ constructor(props) {
             <div>
                  <div className=" cont "  >
                 <div className="d-log">
+                <img className="react" src = {logo} alt= "React Logo"/>  
                     <div className="buttons"><Link to="/login"><button className="S-in auth">Sign-In</button></Link><button className=" S-up auth active">Sign-Up</button></div>
                
                 <h2 className="m-2 ">Sign Up</h2>

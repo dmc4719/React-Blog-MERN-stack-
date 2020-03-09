@@ -1,10 +1,9 @@
+@import '~antd/dist/antd.css';
 html,body{
   height: 100vh;
   margin: 0;
 }
 
 .wrapper{
-    /* min-height: calc(100vh - 70px); */
-   
-    margin-bottom: -50px;
+    min-height: calc(100vh - 70px);
 }

@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode'
 import Axios from 'axios'
 import * as Types from './types'
 import setAuthToken from './../../utils/setAuthToken'
+import { message } from 'antd'
 
 
 export const login = (user,history) => dispatch => {
@@ -19,8 +20,11 @@ export const login = (user,history) => dispatch => {
                 user:decode
             }
         })
-        // localStorage.removeItem('auth_token')
-        history.push('/')
+        message.success('Successfully Logged in')
+        setTimeout(()=>{
+            history.push('/')
+        },2000)
+        
     })
     .catch(error=>{
         if(error){
@@ -69,6 +73,7 @@ export const register = (user, history) => dispatch => {
 export const logout = history => {
     localStorage.removeItem('auth_token')
     setAuthToken()
+    message.success('Successfully Logged out')
     history.push('/login')
     return {
         type: Types.SET_USER,

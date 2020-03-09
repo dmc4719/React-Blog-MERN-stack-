@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import {Link,Redirect} from 'react-router-dom'
 import {login} from './../store/actions/authActions'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import logo from './../logo.svg'
 import './logReg.css'
- 
 export class Login extends Component {
     constructor(props) {
         super(props)
@@ -55,7 +55,9 @@ export class Login extends Component {
      
         return (
             <div className=" cont "  >
+                
                 <div className="d-log">
+                <img className="react" src = {logo} alt= "React Logo"/>  
                     <div className="buttons">
 
 

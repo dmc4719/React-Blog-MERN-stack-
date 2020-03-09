@@ -5,7 +5,7 @@ import {create_Post} from '../../store/actions/postActions'
 import QuillEditor from './../../components/editor/QuillEditor'
 import Axios from 'axios'
 import './static/blog.css'
-
+import {message} from 'antd'
 
 export class Create_Posts extends Component {
     token = localStorage.getItem('auth_token')
@@ -44,6 +44,7 @@ export class Create_Posts extends Component {
 
     onSubmit(e){
         e.preventDefault()
+       
         const {title,content,error,postImage} = this.state
 
         if(title  === ''|| content === '' || postImage === ''){
@@ -87,6 +88,7 @@ export class Create_Posts extends Component {
         })
     }
 
+    
 
     
     render() {
@@ -117,7 +119,7 @@ export class Create_Posts extends Component {
                 <button onClick={this.onSubmit} className="btn btn-primary m-4">Create Post</button>
                 <Link to='/posts'><button  className="btn btn-primary m-4">Go back to Posts</button></Link>
                 
-          
+                
                 </div>
              
                            
