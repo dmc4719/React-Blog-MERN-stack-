@@ -145,7 +145,7 @@ export class View_Single extends Component {
                     <Moment>{post.timestamps}</Moment>
                 <h1 className="mt-4 title">{post.title}</h1>
                 
-               <div style={{}} className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(post.content)}
+               <div style={{}} className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}
                
                </div>
                
