@@ -8,17 +8,11 @@ import Moment from 'react-moment';
 import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import { message } from 'antd'
-const socketUrl = 'http://localhost:5000/'
+const socketUrl = window.location.protocol + '//' + window.location.host
 const socket =  io(socketUrl)
 
 
-var Url =''
-if(window.location.host.includes('localhost')){
-   Url = 'http://localhost:5000'
-}
-else{
-   Url = 'https://mernstackblogproject.herokuapp.com'
-}
+var Url = window.location.protocol + '//' + window.location.host
 
 export class View_Single extends Component {
     constructor(props) {
@@ -109,9 +103,11 @@ export class View_Single extends Component {
             this.initSocket()
     }
 
+    
+   
  
     render() {
-      console.log(window.location.host,window.location.protocol+'//'+window.location.host)
+     
         const {post,comments,postUser,isLoading} = this.state
                      const comm = comments.map((com)=> <div key={com._id} className="comment_div">
                          <img src={`${Url}/${com.user.image}`} alt="user"/>
@@ -126,9 +122,17 @@ export class View_Single extends Component {
         } else{
             
             message.success('Post Loaded',1)
-        }          
+        }    
+
+        var newStr = ''
+        if(post.content){
+             newStr = post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/')
+          
+        }      
        
-        
+       
+       
+    
         return (
             
             <div className="single_post_page ">
@@ -140,6 +144,7 @@ export class View_Single extends Component {
                     <h5 className="m-2">Written By {postUser.name} </h5>
                     <Moment>{post.timestamps}</Moment>
                 <h1 className="mt-4 title">{post.title}</h1>
+                
                <div style={{}} className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(post.content)}
                
                </div>

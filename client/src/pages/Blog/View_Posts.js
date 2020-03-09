@@ -11,15 +11,8 @@ import { message } from 'antd'
 const socketUrl = ''
 const socket =  io(socketUrl)
 
-var Url =''
-if(window.location.host.includes('localhost')){
-   Url = 'http://localhost:5000'
-//    socketUrl = 'http://localhost:5000/'
-}
-else{
-   Url = 'https://mernstackblogproject.herokuapp.com'
-//    socketUrl = 'https://mernstackblogproject.herokuapp.com/'
-}
+var Url = window.location.protocol + '//' + window.location.host
+
 
 export class View_Posts extends Component {
     token = localStorage.getItem('auth_token')

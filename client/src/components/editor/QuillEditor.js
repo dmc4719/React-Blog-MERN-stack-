@@ -277,7 +277,7 @@ class QuillEditor extends React.Component {
                         let position = range ? range.index : 0;
 
 
-                        quill.insertEmbed(position, "image", { src: "http://localhost:5000/" + response.data.url, alt: response.data.fileName });
+                        quill.insertEmbed(position, "image", { src: window.location.protocol + '//' + window.location.host + response.data.url, alt: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {
@@ -314,7 +314,7 @@ class QuillEditor extends React.Component {
 
                         let range = quill.getSelection();
                         let position = range ? range.index : 0;
-                        quill.insertEmbed(position, "video", { src: "http://localhost:5000/" + response.data.url, title: response.data.fileName });
+                        quill.insertEmbed(position, "video", { src: window.location.protocol + '//' + window.location.host + response.data.url, title: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {
