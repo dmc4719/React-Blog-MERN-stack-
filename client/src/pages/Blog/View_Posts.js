@@ -62,7 +62,7 @@ export class View_Posts extends Component {
    
     
     render() {
-        console.log('hello')
+        
         const {posts,isLoading} = this.state
 
         if(isLoading){
