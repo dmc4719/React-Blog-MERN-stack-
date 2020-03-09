@@ -8,13 +8,7 @@ const __ISMSIE__ = navigator.userAgent.match(/Trident/i) ? true : false;
 // Quill.register('modules/clipboard', PlainClipboard, true);
 
 const QuillClipboard = Quill.import('modules/clipboard');
-var Url =''
-if(window.location.host.includes('localhost')){
-   Url = 'http://localhost:5000'
-}
-else{
-   Url = 'https://powerful-garden-71525.herokuapp.com'
-}
+var Url = window.location.protocol + '//' + window.location.host
 
 class Clipboard extends QuillClipboard {
 
@@ -277,7 +271,7 @@ class QuillEditor extends React.Component {
                         let position = range ? range.index : 0;
 
 
-                        quill.insertEmbed(position, "image", { src: window.location.protocol + '//' + window.location.host + response.data.url, alt: response.data.fileName });
+                        quill.insertEmbed(position, "image", { src: Url + response.data.url, alt: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {
@@ -314,7 +308,7 @@ class QuillEditor extends React.Component {
 
                         let range = quill.getSelection();
                         let position = range ? range.index : 0;
-                        quill.insertEmbed(position, "video", { src: window.location.protocol + '//' + window.location.host + response.data.url, title: response.data.fileName });
+                        quill.insertEmbed(position, "video", { src: Url + response.data.url, title: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {

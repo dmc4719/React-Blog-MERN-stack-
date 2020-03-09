@@ -131,18 +131,21 @@ export class View_Single extends Component {
         return (
             
             <div className="single_post_page ">
+                
                 <div className="single-post text-center mt-4 ">
                
                     <span className="img-container"> 
-                    <img src={ `${Url}/${post.image}`} alt="" />
+                    {post.image?  <img src={ `${Url}/${post.image}`} alt="" /> : ''}
+                      
+                    
                     </span>
                     <h5 className="m-2">Written By {postUser.name} </h5>
                     <Moment>{post.timestamps}</Moment>
                 <h1 className="mt-4 title">{post.title}</h1>
                 
-               <div style={{}} className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}
+               <div className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}</div>
                
-               </div>
+               
                
                 </div>
               

@@ -53,15 +53,18 @@ constructor(props) {
     onSubmit(e){
         e.preventDefault();
         const {name,email,pass,passConfirm,userImage} = this.state
+        if(pass===passConfirm && name && email ){
+            let image = ''
+            const formData = new FormData()
+            formData.append('userImage', userImage)
+            Axios.post("/api/auth/upload_user_image",formData,{})
+            .then(json=> {
+                image = json.data.userImage
+                this.props.register({name,email,pass,image},this.props.history)
+            })
+        }
 
-        let image = ''
-        const formData = new FormData()
-        formData.append('userImage', userImage)
-        Axios.post("/api/auth/upload_user_image",formData,{})
-        .then(json=> {
-            image = json.data.userImage
-            this.props.register({name,email,pass,image},this.props.history)
-        })
+     
 
         
     }
@@ -84,6 +87,7 @@ constructor(props) {
                     <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
                     <input name="passConfirm" placeholder="Password-confirmation" className="form-control m-2 " onChange={this.inputChangeHandler}/>
+                    {this.state.error.passConfirm? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
                     <input type="file" className="m-3" onChange={this.onFileChange}/>
                     <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Sign Up</button>
                 </div>

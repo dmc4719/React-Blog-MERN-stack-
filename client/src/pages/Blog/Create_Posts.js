@@ -5,7 +5,7 @@ import {create_Post} from '../../store/actions/postActions'
 import QuillEditor from './../../components/editor/QuillEditor'
 import Axios from 'axios'
 import './static/blog.css'
-import {message} from 'antd'
+
 
 export class Create_Posts extends Component {
     token = localStorage.getItem('auth_token')
@@ -45,7 +45,7 @@ export class Create_Posts extends Component {
     onSubmit(e){
         e.preventDefault()
        
-        const {title,content,error,postImage} = this.state
+        const {title,content,postImage} = this.state
 
         if(title  === ''|| content === '' || postImage === ''){
             this.setState({

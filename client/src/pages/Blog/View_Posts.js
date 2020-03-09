@@ -75,7 +75,7 @@ export class View_Posts extends Component {
         
         
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
-            {console.log(post.image)}
+           
             <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
 
             <div >
