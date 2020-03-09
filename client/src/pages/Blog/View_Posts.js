@@ -76,16 +76,16 @@ export class View_Posts extends Component {
         
         
         var newStr = ''
-        if(post.content){
-             newStr = post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/')
-          
-        }      
+        
 
        
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
            
             <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
-
+            {post.content?
+             newStr = post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/')
+          :''
+        }      
             <div >
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mx-2 title" >{post.title}</h5></Link>
 
