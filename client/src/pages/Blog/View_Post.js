@@ -13,7 +13,7 @@ const socket =  io(socketUrl)
 
 
 
-export class view_Posts extends Component {
+export class View_Posts extends Component {
     token = localStorage.getItem('auth_token')
     constructor(props) {
         super(props)
@@ -62,6 +62,7 @@ export class view_Posts extends Component {
    
     
     render() {
+        console.log('hello')
         const {posts,isLoading} = this.state
 
         if(isLoading){
@@ -75,6 +76,7 @@ export class view_Posts extends Component {
         
         
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
+            {console.log(post.image)}
             <span className="thumbnail"><img className="p-img mb-2"  src={post.image} alt="nothing"/></span>
 
             <div >
@@ -123,4 +125,4 @@ export class view_Posts extends Component {
             auth: state.auth
         })
 
-export default connect(mapStateToProps,{delete_Post,update_Post})(view_Posts)
+export default connect(mapStateToProps,{delete_Post,update_Post})(View_Posts)

@@ -14,7 +14,7 @@ const express = require('express'),
       http = require('http'),
       server = http.createServer(app);
       global.io = module.exports.io =  socketio(server),
-      fileUpload = require('express-fileupload')
+      
  
 
 

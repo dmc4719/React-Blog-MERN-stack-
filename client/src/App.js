@@ -4,8 +4,8 @@ import './App.css';
 import Login from './components/Login'
 import Register from './components/Register'
 import Landing from './pages/Landing'
-import Posts from './pages/Blog/View_Posts'
 import CreatePosts from './pages/Blog/Create_Posts'
+import Posts from './pages/Blog/View_Posts'
 import  AdminLogin  from './components/adminLogin';
 import AdminHome  from './pages/AdminHome';
 import View_Single from './pages/Blog/View_Single';
