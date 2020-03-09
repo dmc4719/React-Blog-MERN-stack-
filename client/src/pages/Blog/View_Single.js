@@ -17,7 +17,7 @@ if(window.location.host.includes('localhost')){
    Url = 'http://localhost:5000'
 }
 else{
-   Url = 'https://mernstackblogproject.herokuapp.com/'
+   Url = 'https://mernstackblogproject.herokuapp.com'
 }
 
 export class View_Single extends Component {

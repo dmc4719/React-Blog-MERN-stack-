@@ -14,11 +14,11 @@ const socket =  io(socketUrl)
 var Url =''
 if(window.location.host.includes('localhost')){
    Url = 'http://localhost:5000'
-   socketUrl = 'http://localhost:5000/'
+//    socketUrl = 'http://localhost:5000/'
 }
 else{
    Url = 'https://mernstackblogproject.herokuapp.com'
-   socketUrl = 'https://mernstackblogproject.herokuapp.com/'
+//    socketUrl = 'https://mernstackblogproject.herokuapp.com/'
 }
 
 export class View_Posts extends Component {
