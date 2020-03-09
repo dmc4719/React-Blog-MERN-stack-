@@ -50,7 +50,7 @@ router.post('/upload_user_image', up.single('userImage'), (req, res, next) => {
 
 
         const url = req.protocol + '://' + req.get('host')
-        data= url + '/public/uploads/' + req.file.filename
+        data= '/public/uploads/' + req.file.filename
         try {
             res.status(201).json({userImage: data})
         } catch (error) {

@@ -11,7 +11,13 @@ import { message } from 'antd'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
 
-
+var Url =''
+if(window.location.host.includes('localhost')){
+   Url = 'http://localhost:5000'
+}
+else{
+   Url = 'https://mernstackblogproject.herokuapp.com/'
+}
 
 export class View_Posts extends Component {
     token = localStorage.getItem('auth_token')
@@ -77,7 +83,7 @@ export class View_Posts extends Component {
         
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
             {console.log(post.image)}
-            <span className="thumbnail"><img className="p-img mb-2"  src={post.image} alt="nothing"/></span>
+            <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
 
             <div >
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mx-2 title" >{post.title}</h5></Link>

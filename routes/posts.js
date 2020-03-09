@@ -14,10 +14,10 @@ const DIR = './public/uploads';
       
 
 router.get('/',viewPosts);
-router.post('/create_post',authenticate,create_Post)
-router.delete('/delete_Post',authenticate,deletePost)
+router.post('/create_post',auth,create_Post)
+router.delete('/delete_Post',auth,deletePost)
 router.get('/:id',viewSinglePost)
-router.put('/update_Post/',authenticate,updatePost)
+router.put('/update_Post/',auth,updatePost)
 
 
 let storage = multer.diskStorage({
@@ -45,7 +45,7 @@ router.post("/uploadfiles", (req, res) => {
         if (err) {
             return res.json({ success: false, err });
         }
-        console.log(res.req.file.path)
+        console.log(res.req.file.path,res.req.file.filename)
         return res.json({ success: true, url: res.req.file.path, fileName: res.req.file.filename });
     });
 });
@@ -77,7 +77,8 @@ var up = multer({
 
 
             const url = req.protocol + '://' + req.get('host')
-            data= url + '/public/uploads/' + req.file.filename
+            data= '/public/uploads/' + req.file.filename
+            console.log(data)
             try {
                 res.status(201).json({postImage: data})
             } catch (error) {

@@ -11,6 +11,15 @@ import { message } from 'antd'
 const socketUrl = 'http://localhost:5000/'
 const socket =  io(socketUrl)
 
+
+var Url =''
+if(window.location.host.includes('localhost')){
+   Url = 'http://localhost:5000'
+}
+else{
+   Url = 'https://mernstackblogproject.herokuapp.com/'
+}
+
 export class View_Single extends Component {
     constructor(props) {
         super(props)
@@ -102,10 +111,10 @@ export class View_Single extends Component {
 
  
     render() {
-      
+      console.log(window.location.host,window.location.protocol+'//'+window.location.host)
         const {post,comments,postUser,isLoading} = this.state
                      const comm = comments.map((com)=> <div key={com._id} className="comment_div">
-                         <img src={com.user.image} alt="user"/>
+                         <img src={`${Url}/${com.user.image}`} alt="user"/>
                          <div className="comment"><h5 >{com.user.name} - (<Moment format="YYYY/MM/DD">{com.timestamps}</Moment>)</h5>
                      <p>{com.comment}</p></div>
                          
@@ -126,7 +135,7 @@ export class View_Single extends Component {
                 <div className="single-post text-center mt-4 ">
                
                     <span className="img-container"> 
-                    <img src={post.image} alt="" />
+                    <img src={ `${Url}/${post.image}`} alt="" />
                     </span>
                     <h5 className="m-2">Written By {postUser.name} </h5>
                     <Moment>{post.timestamps}</Moment>
