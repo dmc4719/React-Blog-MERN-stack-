@@ -8,7 +8,8 @@ import Moment from 'react-moment';
 import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import { message } from 'antd'
-const socketUrl = window.location.protocol + '//' + window.location.host
+// const socketUrl ="http://localhost:5000/"
+const socketUrl = "/"
 const socket =  io(socketUrl)
 
 

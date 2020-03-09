@@ -8,9 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import io from 'socket.io-client'
 import { message } from 'antd'
-const socketUrl = ''
-const socket =  io(socketUrl)
 
+// const socketUrl ="http://localhost:5000/"
+const socketUrl = "/"
+const socket =  io(socketUrl)
 var Url = window.location.protocol + '//' + window.location.host
 
 
