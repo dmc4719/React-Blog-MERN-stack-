@@ -44,9 +44,7 @@ export class View_Posts extends Component {
 
 
     initSocket = ()=> {
-        // socket.on('connection',() => {
-        //     this.setState({socket})
-        // })
+    
         socket.on('posts',posts =>{
             console.log(posts)
             

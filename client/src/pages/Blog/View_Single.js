@@ -53,21 +53,14 @@ export class View_Single extends Component {
 
     clearStateErrors(e){
         e.preventDefault()
-        console.log('here')
+        
         this.setState({error:null,errors: null})
     
     }
     onSubmit(e){
         e.preventDefault()
         const {comment} = this.state
-        if(!this.props.auth.isAuthenticated){
-            console.log('not logged in')
-             this.setState({
-                errors: "You need to be Logged in to Comment"
-            })
-            
-            return
-        }
+      
         let post = this.props.match.params.post_id
         this.props.Comment({comment,post},this.props.history)
     }
@@ -86,13 +79,14 @@ export class View_Single extends Component {
     componentDidMount(){
         let id = this.props.match.params.post_id
         this.setState({id})
-        Axios(`/api/auth/posts/${id}`)
+        Axios.get(`/api/auth/posts/${id}`)
         .then(post=>{
-            Axios(`/api/auth/comments/${id}`)
+            Axios.get(`/api/auth/comments/${id}`)
             .then(comments=>{
                 
                 this.setState({comments:comments.data})
                  })
+                 .catch(error => console.log(error))
                  
             this.setState({
                 post:post.data,
@@ -100,6 +94,7 @@ export class View_Single extends Component {
                 isLoading:false})
             }
            )
+           .catch(error=> console.log(error))
             this.initSocket()
     }
 

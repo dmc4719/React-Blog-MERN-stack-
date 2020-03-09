@@ -77,7 +77,7 @@ var up = multer({
 
 
             const url = req.protocol + '://' + req.get('host')
-            data= '/public/uploads/' + req.file.filename
+            data= 'public/uploads/' + req.file.filename
             console.log(data)
             try {
                 res.status(201).json({postImage: data})
