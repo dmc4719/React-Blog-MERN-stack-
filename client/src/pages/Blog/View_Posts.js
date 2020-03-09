@@ -96,7 +96,7 @@ export class View_Posts extends Component {
                 <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
                     <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
-            <div className="text text-center content">{rhtml(post.content)}</div>
+            {/* <div className="text text-center content">{rhtml(post.content)}</div> */}
               
         </div>)
 
