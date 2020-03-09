@@ -8,15 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import io from 'socket.io-client'
 import { message } from 'antd'
-const socketUrl = 'http://localhost:5000/'
+const socketUrl = ''
 const socket =  io(socketUrl)
 
 var Url =''
 if(window.location.host.includes('localhost')){
    Url = 'http://localhost:5000'
+   socketUrl = 'http://localhost:5000/'
 }
 else{
-   Url = 'https://mernstackblogproject.herokuapp.com/'
+   Url = 'https://mernstackblogproject.herokuapp.com'
+   socketUrl = 'https://mernstackblogproject.herokuapp.com/'
 }
 
 export class View_Posts extends Component {
