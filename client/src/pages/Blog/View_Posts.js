@@ -6,15 +6,15 @@ import {delete_Post,update_Post} from '../../store/actions/postActions'
 import rhtml from 'react-html-parser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import { message } from 'antd'
 
 // const socketUrl ="http://localhost:5000/"
-const socketUrl = "/"
-const socket =  io(socketUrl)
-var Url = window.location.protocol + '//' + window.location.host
+// const socketUrl = "/"
+// const socket =  io(socketUrl)
+// var Url = window.location.protocol + '//' + window.location.host
 
-
+var Url = "http://localhost:5000/"
 export class View_Posts extends Component {
     token = localStorage.getItem('auth_token')
     constructor(props) {
@@ -29,7 +29,7 @@ export class View_Posts extends Component {
              isLoading: true
         }
         this.onDeleteHandler = this.onDeleteHandler.bind(this)
-        this.initSocket = this.initSocket.bind(this)
+        // this.initSocket = this.initSocket.bind(this)
     }
   
     componentDidMount(){
@@ -40,19 +40,19 @@ export class View_Posts extends Component {
             this.setState({posts,isloading:false,user:this.props.auth.user})
              })
 
-            this.initSocket()
+            // this.initSocket()
      }
 
 
-    initSocket = ()=> {
+    // initSocket = ()=> {
     
-        socket.on('posts',posts =>{
-            console.log(posts)
+    //     socket.on('posts',posts =>{
+    //         console.log(posts)
             
-            this.setState({posts,isLoading:false})
-        } )
+    //         this.setState({posts,isLoading:false})
+    //     } )
 
-    }
+    // }
 
 
     onDeleteHandler(id){
@@ -96,7 +96,7 @@ export class View_Posts extends Component {
                 <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
                     <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
-            <div className="text text-center content">{rhtml(post.content)}</div>
+            {/* <div className="text text-center content">{rhtml(post.content)}</div> */}
               
         </div>)
 

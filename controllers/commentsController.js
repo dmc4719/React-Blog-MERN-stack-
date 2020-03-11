@@ -38,13 +38,10 @@ module.exports = {
             if(!json){
                 res.status(400).json({message: "no user found!"})
             }
-            io.emit('comments', json)
+            // io.emit('comments', json)
             // io.emit("comments",post)
             res.status(200).json(json)})
         .catch(error=> res.status(404).json(error))
-
-    },
-    delete_comment(req,res){
 
     },
     edit_comment(req,res){

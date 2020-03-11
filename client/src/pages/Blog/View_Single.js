@@ -9,8 +9,8 @@ import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import { message } from 'antd'
 // const socketUrl ="http://localhost:5000/"
-const socketUrl = "/"
-const socket =  io(socketUrl)
+// const socketUrl = "/"
+// const socket =  io(socketUrl)
 
 
 var Url = window.location.protocol + '//' + window.location.host
@@ -67,14 +67,14 @@ export class View_Single extends Component {
     }
 
 
-    initSocket = ()=> {
+    // initSocket = ()=> {
       
-        socket.on('comments',comments =>{
+    //     socket.on('comments',comments =>{
             
-            this.setState({comments})
-        } )
+    //         this.setState({comments})
+    //     } )
 
-    }
+    // }
    
    
     componentDidMount(){

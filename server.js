@@ -9,7 +9,7 @@ const express = require('express'),
       posts = require('./routes/posts'),
       comments = require('./routes/comments'),
       multer = require('multer'),
-      passport = require('passport'),
+      passport = require('passport');
       socketio = require('socket.io'),
       http = require('http'),
       server = http.createServer(app);
@@ -23,27 +23,20 @@ const express = require('express'),
       app.use( express.urlencoded({ extended: false }) )
       app.use(cors())
       app.use('/public', express.static('public'));
-    const checkUserType = function(req,res,next){
-        const userType = req.originalUrl.split('/')[2]
-        
-        require('./passport')(userType,passport)
-        next();
-    }
-    
-      app.use(checkUserType)
-      app.use(passport.initialize())
+ 
+      
       app.use('/api/auth/',auth)
       app.use('/api/admin/',admin)    
       app.use('/api/auth/posts',posts)
       app.use('/api/auth/comments',comments)
 
-      io.on('connection',function(socket){
-        console.log('a user connected')
+    //   io.on('connection',function(socket){
+    //     console.log('a user connected')
         
-        socket.on('disconnect',()=>{
-            console.log('user has left')
-        })
-    })
+    //     socket.on('disconnect',()=>{
+    //         console.log('user has left')
+    //     })
+    // })
 
   
 
@@ -71,7 +64,7 @@ const express = require('express'),
 
     
       
-      server.listen(port,() => {
+      app.listen(port,() => {
           console.log(`server started on port ${port}`)
       })
 
