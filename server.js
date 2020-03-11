@@ -12,7 +12,8 @@ const express = require('express'),
       passport = require('passport');
       socketio = require('socket.io'),
       http = require('http'),
-      server = http.createServer(app);
+      server = http.createServer(app),
+      path = require('path'),
       global.io = module.exports.io =  socketio(server),
       
  

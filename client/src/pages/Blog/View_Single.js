@@ -106,7 +106,7 @@ export class View_Single extends Component {
      
         const {post,comments,postUser,isLoading} = this.state
                      const comm = comments.map((com)=> <div key={com._id} className="comment_div">
-                         {/* <img src={`${Url}/${com.user.image}`} alt="user"/> */}
+                         <img src={`${Url}/${com.user.image}`} alt="user"/>
                          <div className="comment"><h5 >{com.user.name} - (<Moment format="YYYY/MM/DD">{com.timestamps}</Moment>)</h5>
                      <p>{com.comment}</p></div>
                          
@@ -136,7 +136,7 @@ export class View_Single extends Component {
                 <div className="single-post text-center mt-4 ">
                
                     <span className="img-container"> 
-                    {/* {post.image?  <img src={ `${Url}/${post.image}`} alt="" /> : ''} */}
+                    {post.image?  <img src={ `${Url}/${post.image}`} alt="" /> : ''}
                       
                     
                     </span>
@@ -144,7 +144,7 @@ export class View_Single extends Component {
                     <Moment>{post.timestamps}</Moment>
                 <h1 className="mt-4 title">{post.title}</h1>
                 
-               {/* <div className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}</div> */}
+               <div className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}</div>
                
                
                

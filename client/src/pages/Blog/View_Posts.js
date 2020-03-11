@@ -80,7 +80,7 @@ export class View_Posts extends Component {
        
         const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
            
-            {/* <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span> */}
+            <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
             
             <div >
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mx-2 title" >{post.title}</h5></Link>
@@ -95,7 +95,7 @@ export class View_Posts extends Component {
                 <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
                     <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
-            {/* <div className="text text-center content">{rhtml(post.content)}</div> */}
+            <div className="text text-center content">{rhtml(post.content)}</div>
               
         </div>)
 
