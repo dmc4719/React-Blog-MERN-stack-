@@ -9,10 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import io from 'socket.io-client'
 import { message } from 'antd'
 
-// const socketUrl ="http://localhost:5000/"
-// const socketUrl = "/"
+const socketUrl ="http://localhost:5000/"
+
 var Url = window.location.protocol + '//' + window.location.host
-const socket =  io(Url + '/')
+const socket =  io(socketUrl)
 
 
 export class View_Posts extends Component {
@@ -75,11 +75,12 @@ export class View_Posts extends Component {
         var check = false;
         
         
-        var newStr = ''
         
-
-       
-        const pp = posts.map((post)=><div key={post._id} className="post m-4 ">
+         
+        var pp 
+       if(posts){
+           console.log(posts)
+       pp = posts.map((post)=><div key={post._id} className="post m-4 ">
            
             <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
             
@@ -96,9 +97,11 @@ export class View_Posts extends Component {
                 <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
                     <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
-            <div className="text text-center content">{rhtml(post.content)}</div>
+            <div className="text text-center content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
               
         </div>)
+       }
+
 
         if(this.state.isloading){
             return (<div className="text-center m-4">...Loading</div>)

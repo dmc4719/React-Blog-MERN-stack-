@@ -12,8 +12,8 @@ module.exports = {
 
  
     create_Post(req,res){
-        const {post,user} = req.body
-        
+        const {post} = req.body
+        console.log(req.user)
         
         const {title,content,image} = post
         if(!title || !content ){
@@ -22,7 +22,7 @@ module.exports = {
         else{
 
             const newPost = Post()   
-            newPost.user = user._id
+            newPost.user = req.user._id
             newPost.title = title
             newPost.content = content 
             newPost.image = image
