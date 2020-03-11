@@ -6,7 +6,7 @@ import {delete_Post,update_Post} from '../../store/actions/postActions'
 import rhtml from 'react-html-parser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 import { message } from 'antd'
 
 // const socketUrl ="http://localhost:5000/"
