@@ -33,7 +33,7 @@ export class View_Single extends Component {
         this.onChange=this.onChange.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
         this.clearStateErrors = this.clearStateErrors.bind(this)
-        this.initSocket = this.initSocket.bind(this)
+        // this.initSocket = this.initSocket.bind(this)
     }
     static getDerivedStateFromProps(nextProps,prevState){
         if(JSON.stringify(nextProps.comment.errors) !== JSON.stringify(prevState)){
@@ -96,7 +96,7 @@ export class View_Single extends Component {
             }
            )
            .catch(error=> console.log(error))
-            this.initSocket()
+            // this.initSocket()
     }
 
     

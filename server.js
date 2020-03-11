@@ -24,7 +24,7 @@ const express = require('express'),
       app.use(cors())
       app.use('/public', express.static('public'));
  
-      
+
       app.use('/api/auth/',auth)
       app.use('/api/admin/',admin)    
       app.use('/api/auth/posts',posts)
@@ -53,6 +53,8 @@ const express = require('express'),
         });
       } 
   
+
+  
    
         mongoose.set('useCreateIndex', true);
         mongoose.set('useFindAndModify',false);
@@ -64,7 +66,7 @@ const express = require('express'),
 
     
       
-      app.listen(port,() => {
+      server.listen(port,() => {
           console.log(`server started on port ${port}`)
       })
 
