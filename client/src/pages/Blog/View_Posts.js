@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import io from 'socket.io-client'
 import { message } from 'antd'
 
-const socketUrl ="http://localhost:5000/"
+const socketUrl ="http://localhost:5000"
 
 var Url = window.location.protocol + '//' + window.location.host
-const socket =  io(socketUrl)
+
+const socket =  io(Url + '/')
 
 
 export class View_Posts extends Component {
@@ -29,7 +30,7 @@ export class View_Posts extends Component {
              isLoading: true
         }
         this.onDeleteHandler = this.onDeleteHandler.bind(this)
-        // this.initSocket = this.initSocket.bind(this)
+        this.initSocket = this.initSocket.bind(this)
     }
   
     componentDidMount(){
@@ -40,19 +41,21 @@ export class View_Posts extends Component {
             this.setState({posts,isloading:false,user:this.props.auth.user})
              })
 
-            // this.initSocket()
+            this.initSocket()
+            console.log(socketUrl)
+console.log(Url)
      }
 
 
-    // initSocket = ()=> {
+    initSocket = ()=> {
     
-    //     socket.on('posts',posts =>{
-    //         console.log(posts)
+        socket.on('posts',posts =>{
+            console.log(posts)
             
-    //         this.setState({posts,isLoading:false})
-    //     } )
+            this.setState({posts,isLoading:false})
+        } )
 
-    // }
+    }
 
 
     onDeleteHandler(id){
