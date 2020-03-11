@@ -10,10 +10,11 @@ import io from 'socket.io-client'
 import { message } from 'antd'
 // const socketUrl ="http://localhost:5000/"
 // const socketUrl = "/"
-// const socket =  io(socketUrl)
-
-
 var Url = window.location.protocol + '//' + window.location.host
+const socket =  io(Url + '/')
+
+
+
 
 export class View_Single extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ export class View_Single extends Component {
         this.onChange=this.onChange.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
         this.clearStateErrors = this.clearStateErrors.bind(this)
-        // this.initSocket = this.initSocket.bind(this)
+        this.initSocket = this.initSocket.bind(this)
     }
     static getDerivedStateFromProps(nextProps,prevState){
         if(JSON.stringify(nextProps.comment.errors) !== JSON.stringify(prevState)){
@@ -67,14 +68,14 @@ export class View_Single extends Component {
     }
 
 
-    // initSocket = ()=> {
+    initSocket = ()=> {
       
-    //     socket.on('comments',comments =>{
+        socket.on('comments',comments =>{
             
-    //         this.setState({comments})
-    //     } )
+            this.setState({comments})
+        } )
 
-    // }
+    }
    
    
     componentDidMount(){
@@ -96,7 +97,7 @@ export class View_Single extends Component {
             }
            )
            .catch(error=> console.log(error))
-            // this.initSocket()
+            this.initSocket()
     }
 
     

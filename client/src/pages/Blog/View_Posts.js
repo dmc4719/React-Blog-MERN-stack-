@@ -11,8 +11,9 @@ import { message } from 'antd'
 
 // const socketUrl ="http://localhost:5000/"
 // const socketUrl = "/"
-// const socket =  io(socketUrl)
 var Url = window.location.protocol + '//' + window.location.host
+const socket =  io(Url + '/')
+
 
 export class View_Posts extends Component {
     token = localStorage.getItem('auth_token')
