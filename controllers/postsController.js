@@ -44,7 +44,7 @@ module.exports = {
         .sort({id:'1'})
         .populate('user')
         .then(post=>{
-                // io.emit("posts",post)
+                io.emit("posts",post)
             res.status(200).json(post)})
         .catch(error=> console.log(error))
     },
