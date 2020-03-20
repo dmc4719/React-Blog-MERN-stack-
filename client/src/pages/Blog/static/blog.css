@@ -316,7 +316,9 @@
         min-height:30px;
         height: 30px;
       }
-      
+      .writer{
+        display: none !important;
+      }
       .post-title h5, .content{
         flex: 8;
         font-size: 13px !important;

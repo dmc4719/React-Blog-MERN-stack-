@@ -3,11 +3,13 @@ import Axios from 'axios'
 import rhtml from 'react-html-parser'
 import  './static/blog.css'
 import {connect} from 'react-redux'
+import {delete_Post} from '../../store/actions/postActions'
 import {Comment} from './../../store/actions/commentActions'
 import Moment from 'react-moment';
 import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import { message } from 'antd'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const socketUrl ="http://localhost:5000/"
 // const socketUrl = "/"
 var Url = window.location.protocol + '//' + window.location.host
@@ -128,23 +130,28 @@ export class View_Single extends Component {
         }      
        
        
-       
+       console.log(postUser)
     
         return (
             
             <div className="single_post_page ">
                 
-                <div className="single-post text-center pt-4">
+                <div className="single-post text-center ">
                
                     <span className="img-container"> 
                     {post.image?  <img src={ `${Url}/${post.image}`} alt="" /> : ''}
-                      
-                    
+
                     </span>
-                    <h5 className="m-2">Written By {postUser.name} </h5>
-                    <Moment>{post.timestamps}</Moment>
-                <h1 className="mt-4 title">{post.title}</h1>
                 
+                <h1 className="mt-4 title">{post.title}</h1>
+                <h5 className="m-2">Written By {postUser.name} </h5>
+                    <Moment>{post.timestamps}</Moment>
+                {this.props.auth.user._id === postUser._id?
+                <div className="text-center"><Link className="mx-3" to={'/posts/update/' + post._id}><p  style={{cursor:"pointer",display: "inline-block"}} >
+                    <FontAwesomeIcon icon={['fas','edit']} style={{ color: "#20B6FF"}}/></p> </Link>
+
+                   <p className="mx-3" style={{cursor:"pointer",display: "inline-block",color:"white !important"}}  onClick={()=> this.onDeleteHandler(post._id)}>
+                    <FontAwesomeIcon icon={['fas','trash']} style={{ color: "#20B6FF"}}/></p></div> : ''}
                <div className=" container single-content " style={{marginBottom: "0px"}}>{rhtml(newStr)}</div>
                
                
@@ -181,4 +188,4 @@ auth : state.auth,
 comment : state.comment
 })
 
-export default connect(mapStateToProps,{Comment})(View_Single)
+export default connect(mapStateToProps,{Comment,delete_Post})(View_Single)

@@ -19,6 +19,8 @@ nav> a:nth-child(1){
     float: left;
     font-size: 20px;
     font-weight: bolder;
+    line-height: 70px;
+   
 }
 nav> a:nth-child(1) sup{
     
@@ -27,6 +29,7 @@ nav> a:nth-child(1) sup{
 }
 
 .ham{
+    
     margin: 10px 0px;
     float: right;
     
@@ -75,7 +78,7 @@ nav> a:nth-child(1) sup{
 
 .react{
     vertical-align: middle !important;
-    width:50px;
+    width:40px;
     margin-right: 10px;
     animation: App-logo-spin infinite 5s linear;
     transition: transform 1.3s ease-in;   

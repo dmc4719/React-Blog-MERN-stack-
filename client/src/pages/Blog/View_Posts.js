@@ -93,9 +93,7 @@ export class View_Posts extends Component {
             
             <div className="writer" style={{ display: "inline-block" }}>
                 <small className="text-muted mx-2">Written By {post.user.name}</small> 
-                {this.props.auth.user._id === post.user._id?
-                <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
-                    <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
+              
                 </div>
             <div className="text content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
             </div>
