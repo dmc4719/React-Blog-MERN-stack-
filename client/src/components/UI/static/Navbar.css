@@ -1,23 +1,118 @@
-ul{
-    list-style: none;
-    display: block;
-    margin: auto;
-    padding: 10px;
-}
-li{
-    display: inline-block;
-    text-decoration: none;
-    margin: 10px;
-    font-weight: 500;
-    color: white;
-    font-size: large;
-}
-li:hover{
-    color: royalblue;
-}
-.nav{
-    display:block;
+nav{
+    padding: 5px 5%;
     text-align: center;
-    background-color: #3f51b5;
-    margin:0;
+    line-height: 70px !important;
+    min-height: 70px !important;
+    background-color: white;
+}
+nav *{
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    font-family: 'Circular Std';
+}
+
+nav ul{
+    margin: 0px !important;
+}
+nav> a:nth-child(1){
+    float: left;
+    font-size: 20px;
+    font-weight: bolder;
+}
+nav> a:nth-child(1) sup{
+    
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.ham{
+    margin: 10px 0px;
+    float: right;
+    
+}
+
+
+.nav-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 1000px;
+    background-color:#20B6FF;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 15px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+
+.nav-icon::before,
+.nav-icon::after{
+    display:block;
+    height: 2px;
+    width: 20px;
+    content: '';
+    border-radius: 6px;
+    background-color: snow;
+    margin: 3px 0px;
+    transition: .2s ease-in-out;
+}
+
+
+.nav-icon:hover:before {
+    transform: translateY(4px) rotate(-135deg);
+}
+.nav-icon:hover:after {
+    transform: translateY(-4px) rotate(135deg);
+}
+
+
+
+
+
+.react{
+    vertical-align: middle !important;
+    width:50px;
+    margin-right: 10px;
+    animation: App-logo-spin infinite 5s linear;
+    transition: transform 1.3s ease-in;   
+ 
+}
+
+@keyframes App-logo-spin {
+    from {
+          transform: rotate(0deg);
+    }
+    to {
+          transform: rotate(360deg);
+    }
+      } 
+nav  ul li,a{
+    text-decoration: none;
+}      
+nav ul li , .profile i{
+    margin: 0px 15px !important;
+    cursor: pointer;
+    height: fit-content !important;
+}
+nav ul {
+    list-style: none;
+}
+nav .profile{
+    float: right;
+}
+
+
+
+@media only screen and (max-width: 600px){
+    nav ul{
+        display: none;
+    }
+    nav{
+        line-height: 80px !important;
+        height: 80px !important;
+    }
 }

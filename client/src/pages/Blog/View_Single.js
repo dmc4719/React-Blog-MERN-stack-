@@ -134,7 +134,7 @@ export class View_Single extends Component {
             
             <div className="single_post_page ">
                 
-                <div className="single-post text-center mt-4 ">
+                <div className="single-post text-center pt-4">
                
                     <span className="img-container"> 
                     {post.image?  <img src={ `${Url}/${post.image}`} alt="" /> : ''}

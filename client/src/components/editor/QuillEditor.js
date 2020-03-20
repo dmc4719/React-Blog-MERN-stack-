@@ -5,8 +5,6 @@ import "react-quill/dist/quill.snow.css";
 import axios from 'axios';
 const __ISMSIE__ = navigator.userAgent.match(/Trident/i) ? true : false;
 
-// Quill.register('modules/clipboard', PlainClipboard, true);
-
 const QuillClipboard = Quill.import('modules/clipboard');
 var Url = window.location.protocol + '//' + window.location.host
 
@@ -41,9 +39,7 @@ class Clipboard extends QuillClipboard {
                             if (node.getAttribute("property") === "og:url") {
                                 url = node.getAttribute("content");
                             }
-                            // if (node.getAttribute("property") === "og:description") {
-                            //     description = node.getAttribute("content");
-                            // }
+                     
                         }
 
                         const rendered = `<a href=${url} target="_blank"><div><img src=${image} alt=${title} width="20%"/><span>${title}</span></div></a>`;
@@ -57,7 +53,7 @@ class Clipboard extends QuillClipboard {
             });
 
         } else {
-            //console.log('when to use this') 보통 다른 곳에서  paste 한다음에  copy하면 이쪽 걸로 한다. 
+            
             super.onPaste(e);
         }
     }
@@ -114,7 +110,6 @@ class VideoBlot extends BlockEmbed {
         } else {
             return node.getAttribute('src');
         }
-        // return { src: node.getAttribute('src'), alt: node.getAttribute('title') };
     }
 
 }
@@ -271,7 +266,7 @@ class QuillEditor extends React.Component {
                         let position = range ? range.index : 0;
 
 
-                        quill.insertEmbed(position, "image", { src: Url + response.data.url, alt: response.data.fileName });
+                        quill.insertEmbed(position, "image", { src: Url + '/' + response.data.url, alt: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {
@@ -308,7 +303,7 @@ class QuillEditor extends React.Component {
 
                         let range = quill.getSelection();
                         let position = range ? range.index : 0;
-                        quill.insertEmbed(position, "video", { src: Url + response.data.url, title: response.data.fileName });
+                        quill.insertEmbed(position, "video", { src: Url + '/' + response.data.url, title: response.data.fileName });
                         quill.setSelection(position + 1);
 
                         if (this._isMounted) {

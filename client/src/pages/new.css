@@ -1,0 +1,225 @@
+@import url(./assets/fonts/CircularStd/stylesheet.css);
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+html{
+    font-size: 100%;
+    font-family: Circular Std, sans-serif;
+    background-color: #EEEEEE;
+}
+
+
+
+
+.banner{
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(./assets/Starry.jpg);
+    background-repeat: no-repeat;
+    position: relative;
+ 
+}
+
+.in{
+    padding: 50px;
+    margin: 8% 0px 0px 12%;
+    border-radius: 6px;
+    display:inline-block;
+    width: fit-content;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4);
+}
+.in h1{
+    font-size: 48px;
+    color: white;
+    width: 500px;
+    margin-bottom: 10px;
+}
+.sidebar{
+    vertical-align: middle;
+    position: absolute;
+    right:0%;
+    top:25%;
+    color:white;
+    float: right;
+    padding:0px 10px 0px 10px;
+    border-radius: 6px;
+
+}
+.sidebar i{
+    display: block;
+    background-color: red;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 1000px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4);
+    font-size:x-large;
+    margin: 50px 15px;
+    cursor: pointer;
+}
+.sidebar i:hover{
+    color: #20B6FF;
+}
+.btn-outline{
+    display: block;
+    border: 2px solid white;
+    width: 175px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    font-family: Circular Std, Montserrat;
+    border-radius: 6px;
+}
+
+
+.about{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-flow: wrap;
+    padding: 60px 5%;
+    background-color: #EEEEEE;
+}
+.cat section {
+    padding-top: 10%;
+    padding-left: 5%;
+}
+.cat section h3{
+    font-size: 14px;
+    font-weight: bold;
+}
+.cat section p{
+    font-size: 11px;
+    font-weight: 100;
+    font-family: sans-serif;
+    width: fit-content;
+}
+.cat{
+    display:flex;
+    flex-direction: row;
+    width: 200px;
+    margin: 15px 20px;
+
+}
+.cat img{
+    width:60px;
+    height: 67px;
+}
+
+.banner-text{
+    padding: 15px 5% !important;
+    margin: 100px;
+    width: 800px;
+    background-color: rgba(0,0,0, 0.1);
+    border-radius: 6px;
+    color: snow;
+}
+.banner-text h1{
+    font-size: 48px;
+    text-align: left;
+    color: #EEEEEE;
+    font-family: Circular Std;
+}
+.banner-text img{
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 60px;
+}
+.banner-text img:nth-child(3){
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 50px;
+    
+}
+
+
+
+
+@media only screen and (max-width: 1000px){
+    .car{
+        bottom: 15%;
+    }
+    .banner-text{
+        display: block;
+        width:570px;
+        margin-top: 50px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 600px){
+    nav ul{
+        display: none;
+    }
+    .banner{
+        max-width: 100%;
+        height:450px;
+        text-align: center;
+    }
+    .in{
+        padding: 10px;
+        margin: 50px 2px;
+        text-align: center;
+    }
+    .btn-outline{
+        margin: auto;
+    }
+    .in h1{
+        font-size: 38px;
+        width:350px;
+    }
+    .sidebar{
+        display: block;
+        padding: 0px;
+        text-align: center;    
+        position: relative;
+        top: 0;
+        float: none;
+    }
+    .sidebar i{
+      display:inline-block;
+      padding: 0px;
+      margin: 0px 15px;
+
+    }
+    .moving-car{
+        height: 1100px;
+        min-height: 1100px;
+    }
+
+    .banner-text{
+        display: block;
+        width:320px;
+        padding: 5px 0px;
+        text-align: left;
+    }
+    .banner-text h1{
+        padding: 10px 20px;
+        text-align: left;
+        font-size: 38px;
+    }
+    .banner-text img{
+        margin: 0px 10px 0px 20px;
+    }
+    .banner-text a{
+        
+        margin: 0px auto 10px 10px;
+    }
+ 
+}
+

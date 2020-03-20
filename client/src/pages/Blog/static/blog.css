@@ -43,6 +43,7 @@
 .post .content p{
     display: block;
     margin:0;
+  
 }
 
 .text{ 
@@ -160,6 +161,7 @@
       }
       .single_post_page{
         height: 100%;
+        background-color: #ffffff;
        
       }
       .single-post > h5{

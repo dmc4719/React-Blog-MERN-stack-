@@ -42,8 +42,7 @@ export class View_Posts extends Component {
              })
 
             this.initSocket()
-            console.log(socketUrl)
-console.log(Url)
+         
      }
 
 
@@ -76,14 +75,12 @@ console.log(Url)
         }
         
         var check = false;
-        
-        
-        
          
         var pp 
+        
        if(posts){
-           console.log(posts)
-       pp = posts.map((post)=><div key={post._id} className="post m-4 ">
+
+            pp = posts.map((post)=><div key={post._id} className="post m-4 ">
            
             <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
             

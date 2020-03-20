@@ -7,8 +7,7 @@ export const create_Post = (post,history,user) => dispatch => {
     Axios.post('/api/auth/posts/create_post',{post,user})
        
         .then(posts => {
-          
-          
+
           dispatch({
             type: Types.CREATE_POST,
             payload: {

@@ -11,18 +11,21 @@ const postReducer = (state=init,action) => {
     switch(action.type){
         case Types.CREATE_POST: {
             return {
+                ...state,
                 post_data: action.payload.post_data,
                 errors: {}
             }
         }
         case Types.DELETE_POST: {
             return {
+                ...state,
                 post_data: action.payload.deleted_post,
                 errors: {}
             }
         }
         case Types.UPDATE_POST: {
             return {
+                ...state,
                 post_data: action.payload.updated_post,
                 errors: {}
             }
