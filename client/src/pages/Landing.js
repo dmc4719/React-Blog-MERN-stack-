@@ -7,11 +7,35 @@ import './new.css'
 import reactIcon from './assets/React.png'
 import quillIcon from './assets/quill.png'
 import carIcon from './assets/Img_05.png'
+import carIcon2 from './assets/Img_06.png'
 import agricultureIcon from './assets/agriculture.png'
 import pigIcon from './assets/pig.png'
+
+
 export class Landing extends Component {
 
+    componentDidMount(){
+        var surface = document.querySelector('.surface');
+        var car = document.querySelector('.car');
+        var img = document.querySelector('.car img');
+        var sky = document.querySelector('.sky');
+        let flag = true;
+        const cars = [carIcon,carIcon2]
+        
+        sky.addEventListener('click',()=>{
+            if(flag === true){
+                flag = false;
+                img.setAttribute('src',cars[1])
+    
+            }
+            else{
+                flag = true;
+                img.setAttribute('src',cars[0])
+            }
+        })
+        
 
+    }
 
     render() {
         

@@ -4,6 +4,8 @@ nav{
     line-height: 70px !important;
     min-height: 70px !important;
     background-color: white;
+    z-index: 2;
+    position: relative;
 }
 nav *{
     display: inline-block;
@@ -65,13 +67,40 @@ nav> a:nth-child(1) sup{
 }
 
 
-.nav-icon:hover:before {
+.ni:before {
     transform: translateY(4px) rotate(-135deg);
 }
-.nav-icon:hover:after {
+.ni:after {
     transform: translateY(-4px) rotate(135deg);
 }
 
+
+
+
+.drawer{
+    background-color: #20B6FF;
+     position: absolute;
+     right: 2%;
+     display:block;
+     height: 162px;
+     width: 200px;
+     z-index: 1;
+     text-align: center;
+     border-bottom-left-radius: 6px;
+     border-bottom-right-radius: 6px;
+     color: white;
+     padding: 0px;
+     transform: translateY(-100%);
+     transition: transform .75s ease-in-out;
+ }
+ .drawer ul{
+     list-style: none;
+ }
+ .drawer li{
+     padding: 15px 5px;
+     margin: 0px;
+     
+ }
 
 
 
