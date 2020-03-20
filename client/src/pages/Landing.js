@@ -18,20 +18,6 @@ export class Landing extends Component {
        
         return (
             <div className="landing" style={{minHeight: "100vh",backgroundColor: "white"}}>
-            {/* <h2 >Welcome to our landing page</h2>
-            {
-            this.props.auth.isAuthenticated? 
-            <button  className="btn btn-outline-danger m-2"  onClick={()=>this.props.logout(this.props.history)}>Logout</button> :
-            <Link to='/login'><button className="btn btn-primary m-2">Login</button></Link>
-            }
-
-            <Link to='/posts'><button className="btn btn-success m-2">Blog</button></Link> */}
-
-
-
-
-
-
 
 <div className="banner">
         <div className="in">
@@ -80,7 +66,7 @@ export class Landing extends Component {
         </div>
         <div className="banner-text">
             <h1>Use Quill Editor to write up amazing blogs with links, image and video uploading features!</h1>
-            <img  src={quillIcon} /><img src={reactIcon} />
+            <div className="text-img"><img  src={quillIcon} /><img src={reactIcon} /></div>
             <a style={{marginTop: "20px"}} href="" className="btn-outline">Sign Up</a>
         </div>
     </div>

@@ -80,24 +80,26 @@ export class View_Posts extends Component {
         
        if(posts){
 
-            pp = posts.map((post)=><div key={post._id} className="post m-4 ">
+            pp = posts.map((post)=><div key={post._id} className="post ">
            
-            <span className="thumbnail"><img className="p-img mb-2"  src={ `${Url}/${post.image}`} alt="nothing"/></span>
-            
-            <div >
-                <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mx-2 title" >{post.title}</h5></Link>
+            <div class="thumbnail"><img className="p-img"  src={ `${Url}/${post.image}`} alt="nothing"/></div>
+            <div class="blog">
+            <div className="post-title ">
+                <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mr-2 title" >{post.title}</h5></Link>
 
                 {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="" onClick={()=> this.onDeleteHandler(post._id)}>
                     <FontAwesomeIcon icon={['fas','trash']} style={{ color: "white"}}/></p> : ''}
                 </div>
             
-            <div style={{ display: "inline-block" }}>
+            <div className="writer" style={{ display: "inline-block" }}>
                 <small className="text-muted mx-2">Written By {post.user.name}</small> 
                 {this.props.auth.user._id === post.user._id?
                 <Link to={'/posts/update/' + post._id}><p style={{cursor:"pointer",display: "inline-block"}} >
                     <FontAwesomeIcon icon={['fas','edit']} style={{ color: "white"}}/></p> </Link>:''}
                 </div>
-            <div className="text text-center content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
+            <div className="text content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
+            </div>
+         
               
         </div>)
        }
@@ -115,7 +117,7 @@ export class View_Posts extends Component {
                 
                 <h3 className="m-4">Blog Posts</h3>
                 {this.state.posts.length ? '':<h5 className="m-4">No Post Found!</h5> }
-                <div className="">
+                <div className="Blogs">
                 {pp}
                 </div>
                 {

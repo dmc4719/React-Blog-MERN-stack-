@@ -104,9 +104,9 @@ html{
 }
 .cat section p{
     font-size: 11px;
-    font-weight: 100;
+    font-weight: bolder;
     font-family: sans-serif;
-    width: fit-content;
+    width: 140px;
 }
 .cat{
     display:flex;
@@ -198,8 +198,8 @@ html{
 
     }
     .moving-car{
-        height: 1100px;
-        min-height: 1100px;
+        height: 1200px;
+        min-height: 1200px;
     }
 
     .banner-text{
@@ -211,15 +211,17 @@ html{
     .banner-text h1{
         padding: 10px 20px;
         text-align: left;
-        font-size: 38px;
+        font-size: 30px;
     }
     .banner-text img{
         margin: 0px 10px 0px 20px;
+        vertical-align: middle;
     }
     .banner-text a{
         
         margin: 0px auto 10px 10px;
     }
+
  
 }
 

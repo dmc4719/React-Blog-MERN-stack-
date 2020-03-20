@@ -26,7 +26,7 @@ footer a{
 }
 
 
-@media only screen (max-width: 600px){
+@media only screen and (max-width: 600px){
     footer ul{
         display:none;
     }
