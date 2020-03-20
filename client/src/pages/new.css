@@ -33,6 +33,7 @@ html{
     margin: 8% 0px 0px 12%;
     border-radius: 6px;
     display:inline-block;
+    max-width: 100%;
     width: fit-content;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4);
@@ -41,6 +42,7 @@ html{
     font-size: 48px;
     color: white;
     width: 500px;
+    max-width: 100%;
     margin-bottom: 10px;
 }
 .sidebar{
