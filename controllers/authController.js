@@ -24,7 +24,7 @@ module.exports = {
                             let token = jwt.sign({_id: user._id,email:user.email,pass:user.pass,name:user.name,role:user.role,timestamp:user.timestamp},'SECRET',{expiresIn: '7d'})
                             res.status(200).json({token: `Bearer ${token}`,success:true})}
                             else{
-                                res.status(400).json({error:"passwords don't match"})
+                                res.status(400).json({pass:"passwords don't match"})
                             }
                         }
                         else{

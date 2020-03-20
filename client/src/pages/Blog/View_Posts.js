@@ -5,6 +5,7 @@ import './static/blog.css'
 import {delete_Post,update_Post} from '../../store/actions/postActions'
 import rhtml from 'react-html-parser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Moment from 'react-moment';
 
 import io from 'socket.io-client'
 import { message } from 'antd'
@@ -85,17 +86,17 @@ export class View_Posts extends Component {
             <div class="thumbnail"><img className="p-img"  src={ `${Url}/${post.image}`} alt="nothing"/></div>
             <div class="blog">
             <div className="post-title ">
-                <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="mr-2 title" >{post.title}</h5></Link>
+                <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="title" >{post.title}</h5></Link>
 
-                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="" onClick={()=> this.onDeleteHandler(post._id)}>
+                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="ml-1" onClick={()=> this.onDeleteHandler(post._id)}>
                     <FontAwesomeIcon icon={['fas','trash']} style={{ color: "white"}}/></p> : ''}
                 </div>
             
             <div className="writer" style={{ display: "inline-block" }}>
-                <small className="text-muted mx-2">Written By {post.user.name}</small> 
-              
+                {/* <small className="text-muted mx-2">Written By {post.user.name}</small>  */}
+                <small style={{"color":"white"}}><Moment>{post.timestamps}</Moment></small>
                 </div>
-            <div className="text content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
+            <div className="text content truncate-overflow">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
             </div>
          
               
@@ -113,7 +114,7 @@ export class View_Posts extends Component {
         return (
             <div className="text-center wr-posts">
                 
-                <h3 className="m-4">Blog Posts</h3>
+                <h3 className="p-2">Blog Posts</h3>
                 {this.state.posts.length ? '':<h5 className="m-4">No Post Found!</h5> }
                 <div className="Blogs">
                 {pp}

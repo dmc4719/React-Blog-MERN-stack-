@@ -4,12 +4,15 @@ import {Link, useHistory} from 'react-router-dom'
 import reactIcon from './../../pages/assets/React.png'
 import { useSelector,useDispatch } from 'react-redux'
 import {logout} from './../../store/actions/authActions'
-import $ from 'jquery'
+
 var flag = false
 
 function navdrawer(){
     var nav = document.querySelector('.nav-icon')
     var drawer = document.querySelector('.drawer')
+    var drawerUl = document.querySelectorAll('.drawer ul li')
+    console.log(drawerUl.length)
+    
     nav.addEventListener('click', ()=>{
         if(flag=== false){
             flag = true
@@ -22,6 +25,15 @@ function navdrawer(){
             nav.classList.toggle("ni")
         }
     })
+    for (let index = 0; index < drawerUl.length; index++) {
+        drawerUl[index].addEventListener('click',()=>{
+            flag = false
+            drawer.style.transform ="translateY(-100%)"
+            nav.classList.toggle("ni")
+        })
+        
+    }
+   
     
 }
 

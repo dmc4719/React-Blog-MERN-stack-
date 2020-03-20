@@ -43,7 +43,7 @@
     overflow: hidden;
     padding: 5px;
 }
-.post  .content> h2, .content > h3, .content > h1{
+.post  .content> h2, .content > h3, .content > h1, .content > img{
  display:none;
 }
 .post .content p{
@@ -53,16 +53,18 @@
 }
 
 .text{ 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    line-height: 20px;   
+
     height: 80px;
     text-align: left;
     margin-top: 20px;
     padding: 0px 20px !important;
-    word-wrap: break-word;
     color:white;
     font-family: "montserrat",sans-serif;
+    
+}
+.text p{
+  font-size: 12px !important;
+  font-weight: 100;
 }
 
 .text br{
@@ -84,6 +86,46 @@
   
 }
 
+:root{
+  --lh: 1.4rem;
+}
+.wr-posts{
+  line-height: var(--lh);
+}
+
+
+.truncate-overflow, .content {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem; /* space for ellipsis */
+}
+.truncate-overflow::before ,content::before{
+  position: absolute;
+  content: "...";
+  /* tempting... but shows when lines == content */
+  /* top: calc(var(--lh) * (var(--max-lines) - 1)); */
+  
+  /*
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  */
+  bottom: 0;
+  right: 0;
+}
+.truncate-overflow::after , content::after{
+  content: "";
+  position: absolute;
+  /*
+  inset-inline-end: 0;
+  */
+  right: 0;
+  /* missing bottom on purpose*/
+  width: 1rem;
+  height: 1rem;
+  background: white;
+}
 
 
 
@@ -290,6 +332,11 @@
         justify-content: center;
         /* align-items: center; */
     }
+    .blog{
+      padding-top: 10px;
+      
+    }
+    
 
     @media only screen and (max-width: 600px){
       .post{

@@ -51,19 +51,12 @@ export class Login extends Component {
         if(this.props.auth.isAuthenticated){
             return <Redirect to='/'   />
         }
-        console.log(this.state.error)
+        
      
         return (
             <div className=" cont "  >
                 
                 <div className="d-log">
-                <img className="react" src = {logo} alt= "React Logo"/>  
-                    <div className="buttons">
-
-
-                        <button className="S-in active auth">Sign-In</button>
-                    <Link to="/register"><button className="S-up auth">Sign-Up</button></Link>
-                    </div>
                
                 <h2 className="m-2 ">Sign In</h2>
                 
@@ -71,15 +64,14 @@ export class Login extends Component {
                    {this.state.error.email? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.email}</small>:''}
                     <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
-                    <Link to="/register"><small style={{marginLeft: "-150px"}} onClick={this.clearState}>Don't Have an account?</small></Link>
+                    <Link to="/register"><small style={{marginLeft: "-150px"}} onClick={this.clearState}>Don't have an account?</small></Link>
                     <h5 className="mt-3">Or</h5>
                     <div className="icons m-3">
                     <FontAwesomeIcon icon={['fab','facebook']} size="lg" className="mx-2 icon"/>
                     <FontAwesomeIcon icon={['fab','google']} size="lg" className="mx-2 icon"/>
                     <FontAwesomeIcon icon={['fab','github']} size="lg" className="mx-2 icon"/>
                     </div>
-                    
-                    <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Login</button>
+                    <a onClick={this.onSubmit} style={{marginTop: "20px"}} href="" className="login-btn">Login</a>
                 </div>
                 
                 

@@ -4,7 +4,7 @@ nav{
     line-height: 70px !important;
     min-height: 70px !important;
     background-color: white;
-    z-index: 2;
+    z-index: 3;
     position: relative;
 }
 nav *{
@@ -84,7 +84,7 @@ nav> a:nth-child(1) sup{
      display:block;
      height: 162px;
      width: 200px;
-     z-index: 1;
+     z-index: 2;
      text-align: center;
      border-bottom-left-radius: 6px;
      border-bottom-right-radius: 6px;
