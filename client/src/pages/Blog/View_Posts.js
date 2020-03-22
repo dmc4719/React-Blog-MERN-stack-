@@ -88,7 +88,7 @@ export class View_Posts extends Component {
             <div className="post-title ">
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="title" >{post.title}</h5></Link>
 
-                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="ml-1" onClick={()=> this.onDeleteHandler(post._id)}>
+                {this.props.auth.user._id === post.user._id?   <p style={{cursor:"pointer",display: "inline-block",color:"white !important"}} className="ml-2" onClick={()=> this.onDeleteHandler(post._id)}>
                     <FontAwesomeIcon icon={['fas','trash']} style={{ color: "white"}}/></p> : ''}
                 </div>
             
@@ -96,7 +96,7 @@ export class View_Posts extends Component {
                 {/* <small className="text-muted mx-2">Written By {post.user.name}</small>  */}
                 <small style={{"color":"white"}}><Moment>{post.timestamps}</Moment></small>
                 </div>
-            <div className="text content truncate-overflow">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
+            <div className="text content">{rhtml(post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/'))}</div>
             </div>
          
               

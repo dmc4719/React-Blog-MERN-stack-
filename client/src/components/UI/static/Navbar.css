@@ -100,6 +100,10 @@ nav> a:nth-child(1) sup{
      padding: 15px 5px;
      margin: 0px;
      cursor: pointer;
+    font-weight: bolder; 
+ }
+ .drawer li a{
+     color: white;
      
  }
 

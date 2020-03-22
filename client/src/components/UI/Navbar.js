@@ -54,7 +54,7 @@ function Navbar(props) {
         <div>
 
 <nav>
-        <a href="#"><img className="react" src={reactIcon} />Blog<sup>TM</sup></a>
+        <Link to="/"><img className="react" src={reactIcon} />Blog<sup>TM</sup></Link>
         <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/posts">Blogs</Link></li>
@@ -77,7 +77,7 @@ function Navbar(props) {
     </nav>
     <div className="drawer">
         <ul>
-            <li>Blogs</li>
+            <li><Link to="/posts">Blogs</Link></li>
             <li>Profile</li>
             {
             auth.isAuthenticated? 

@@ -1,7 +1,7 @@
 
 .wr-posts{
     background-color: #3f51b5;
-    
+    /* background-image:linear-gradient(131deg, rgb(50, 139, 242) 1%, rgb(22, 68, 173) 67%); */
     padding-top: 20px;
     text-align: center;
     /* display: block; */
@@ -30,6 +30,7 @@
 }
 .post{
     background-color: #42a5f5db;
+
     width:300px;
     margin:0px 25px 25px;
     height: 350px;
@@ -43,24 +44,36 @@
     overflow: hidden;
     padding: 5px;
 }
-.post  .content> h2, .content > h3, .content > h1, .content > img{
- display:none;
-}
+
 .post .content p{
     display: block;
     margin:0;
   
 }
+.content p> *{
+  display: inline-block !important;
+}
+
+.content p> br{
+  display: none !important;
+}
+.text *{
+  display: none;
+}
 
 .text{ 
 
-    height: 80px;
+    height: 90px;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0px 20px !important;
     color:white;
     font-family: "montserrat",sans-serif;
-    
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 .text p{
   font-size: 12px !important;
@@ -95,38 +108,7 @@
 }
 
 
-.truncate-overflow, .content {
-  --max-lines: 3;
-  position: relative;
-  max-height: calc(var(--lh) * var(--max-lines));
-  overflow: hidden;
-  padding-right: 1rem; /* space for ellipsis */
-}
-.truncate-overflow::before {
-  position: absolute;
-  content: "...";
-  /* tempting... but shows when lines == content */
-  /* top: calc(var(--lh) * (var(--max-lines) - 1)); */
-  
-  /*
-  inset-block-end: 0;
-  inset-inline-end: 0;
-  */
-  bottom: 1%;
-  right: 4%;
-}
-.truncate-overflow::after {
-  content: "";
-  position: absolute;
-  /*
-  inset-inline-end: 0;
-  */
-  right: 0;
-  /* missing bottom on purpose*/
-  width: 1rem;
-  height: 1rem;
-  background: white;
-}
+
 
 
 
@@ -371,12 +353,29 @@
         flex: 8;
         font-size: 13px !important;
       }
-      .content{
+      .text{
         margin: 0px !important;
         padding: 5px  5px!important;
         min-height:40px !important;
         height:40px !important;
+        max-width: 100%;
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; */
       }
+    
+      .post .content p{
+        display: block;
+        margin:0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      
+    }
       .post-title p{
         flex: 2;
       }
@@ -389,16 +388,5 @@
       }
 
 
-      .truncate-overflow::before {
-        
-        /* tempting... but shows when lines == content */
-        /* top: calc(var(--lh) * (var(--max-lines) - 1)); */
-        
-        /*
-        inset-block-end: 0;
-        inset-inline-end: 0;
-        */
-        bottom: -2%;
-        right: 4%;
-      }
+  
     }
