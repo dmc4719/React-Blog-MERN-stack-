@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import './static/Navbar.css'
-import {Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import reactIcon from './../../pages/assets/React.png'
 import { useSelector,useDispatch } from 'react-redux'
-import {logout} from './../../store/actions/authActions'
-
+import { logout } from './../../store/actions/authActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 var flag = false
 
 function navdrawer(){
@@ -68,9 +68,9 @@ function Navbar(props) {
         <a className="ham" href="#" ><div className="nav-icon"><div></div></div></a>
      
         <ul className="profile">
-            <i className="fa fa-search"></i>
-            <i className="fa fa-user"></i>
-            <i className="fa fa-envelope"></i>
+        <FontAwesomeIcon icon={['fas','search']} style={{ color: "white"}}/>
+        <FontAwesomeIcon icon={['fas','user']} style={{ color: "white"}}/>
+        <FontAwesomeIcon icon={['fas','envelope']} style={{ color: "white"}}/>
             
         </ul>
       

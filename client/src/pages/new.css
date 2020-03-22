@@ -56,18 +56,19 @@ html{
     border-radius: 6px;
 
 }
-.sidebar i{
+
+.sidebar svg{
     display: block;
     background-color: red;
     padding: 5px;
-    height: 30px;
-    width: 30px;
+    /* height: 30px;
+    width: 30px; */
     border-radius: 1000px;
     line-height: 30px;
     text-align: center;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4);
-    font-size:x-large;
+    /* font-size:x-large; */
     margin: 50px 15px;
     cursor: pointer;
 }
@@ -193,10 +194,11 @@ html{
         top: 0;
         float: none;
     }
-    .sidebar i{
+    .sidebar svg{
       display:inline-block;
       padding: 0px;
       margin: 0px 15px;
+      font-size: 28px ;
 
     }
     .moving-car{

@@ -10,7 +10,7 @@ import carIcon from './assets/Img_05.png'
 import carIcon2 from './assets/Img_06.png'
 import agricultureIcon from './assets/agriculture.png'
 import pigIcon from './assets/pig.png'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Landing extends Component {
 
@@ -50,9 +50,9 @@ export class Landing extends Component {
           
         </div>
         <div className="sidebar">
-                <i className="fab fa-facebook-f"></i>
-                <i className="fab fa-instagram"></i>
-                <i className="fab fa-linkedin-in"></i>
+                <FontAwesomeIcon icon={['fab','facebook']} size="2x" style={{ color: "white"}}/>
+                <FontAwesomeIcon icon={['fab','twitter']} size="2x" style={{ color: "white"}}/>   
+                <FontAwesomeIcon icon={['fab','linkedin']} size="2x" style={{ color: "white"}}/>            
         </div>
     </div>
 
