@@ -128,9 +128,7 @@ export class View_Single extends Component {
              newStr = post.content.replace("http://localhost:5000/", window.location.protocol+'//'+window.location.host + '/')
           
         }      
-       
-       
-       console.log(postUser)
+
     
         return (
             
@@ -173,7 +171,7 @@ export class View_Single extends Component {
                 
                 <textarea onClick={this.clearStateErrors} className="form-control" value={this.state.comment} name="comment" onChange={this.onChange}/>
                 <button  onClick={this.onSubmit} className="btn btn-outline-primary">Comment!</button>
-            </div>:<Link to="/login"><h5 style={{textAlign:"center", marginBottom: "20px"}}>Login to Comment!</h5></Link>
+            </div>:<Link to="/login"><h5 style={{textAlign:"center", marginBottom: "30px"}}>Login to Comment!</h5></Link>
             }
                 
                 

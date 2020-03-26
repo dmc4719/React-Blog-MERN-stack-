@@ -11,7 +11,6 @@ function navdrawer(){
     var nav = document.querySelector('.nav-icon')
     var drawer = document.querySelector('.drawer')
     var drawerUl = document.querySelectorAll('.drawer ul li')
-    console.log(drawerUl.length)
     
     nav.addEventListener('click', ()=>{
         if(flag=== false){

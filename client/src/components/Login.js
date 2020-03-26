@@ -13,7 +13,8 @@ export class Login extends Component {
              email: '',
              pass: '',
              user: {},
-             error: {}
+             error: {},
+           
         }
        
         this.inputChangeHandler = this.inputChangeHandler.bind(this)
@@ -21,6 +22,7 @@ export class Login extends Component {
        
     }
 
+   
 
     static getDerivedStateFromProps(nextProps,prevState){
         if(JSON.stringify(nextProps.auth.errors) !== JSON.stringify(prevState)){
@@ -52,6 +54,7 @@ export class Login extends Component {
             return <Redirect to='/'   />
         }
         
+        
      
         return (
             <div className=" cont "  >
@@ -61,6 +64,7 @@ export class Login extends Component {
                 <h2 className="m-2 ">Sign In</h2>
                 
                     <input name="email" placeholder="Email" className="form-control m-2 "   onChange={this.inputChangeHandler}/>
+                    
                    {this.state.error.email? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.email}</small>:''}
                     <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
