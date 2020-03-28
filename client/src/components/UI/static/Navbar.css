@@ -42,7 +42,8 @@ nav> a:nth-child(1) sup{
     height: 40px;
     width: 40px;
     border-radius: 1000px;
-    background-color:#20B6FF;
+    background-color: #2a8ebf;
+    /* background-color:#20B6FF; */
     display: flex;
     flex-direction: column;
     margin: 5px 15px;

@@ -68,8 +68,8 @@ export class Login extends Component {
                    {this.state.error.email? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.email}</small>:''}
                     <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
-                    <Link to="/register"><small style={{marginLeft: "-150px"}} onClick={this.clearState}>Don't have an account?</small></Link>
-                    <h5 className="mt-3">Or</h5>
+                    <Link to="/register"><small style={{marginLeft: "-60px"}} onClick={this.clearState}>Don't have an account? Sign up now!</small></Link>
+                    <h5 className="mt-3">Or login using</h5>
                     <div className="icons m-3">
                     <FontAwesomeIcon icon={['fab','facebook']} size="lg" className="mx-2 icon"/>
                     <FontAwesomeIcon icon={['fab','google']} size="lg" className="mx-2 icon"/>
