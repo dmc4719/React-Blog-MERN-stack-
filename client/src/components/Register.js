@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {register} from './../store/actions/authActions'
 import Axios from 'axios'
-import logo from './../logo.svg'
 export class Register extends Component {
 
 

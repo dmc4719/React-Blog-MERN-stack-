@@ -1,4 +1,4 @@
-@import url(./assets/fonts/CircularStd/stylesheet.css);
+@import url(./../assets/fonts/CircularStd/stylesheet.css);
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 
@@ -22,7 +22,7 @@ html{
     height: 700px;
     background-size: cover;
     background-position: center;
-    background-image: url(./assets/Starry.jpg);
+    background-image: url(./../assets/Starry.jpg);
     background-repeat: no-repeat;
     position: relative;
  
@@ -154,7 +154,7 @@ html{
 
 @media only screen and (max-width: 1000px){
     .car{
-        bottom: 15%;
+        bottom: 22%;
     }
     .banner-text{
         display: block;
@@ -166,6 +166,9 @@ html{
 }
 
 @media only screen and (max-width: 600px){
+    .car{
+        bottom: 15%;
+    }
     nav ul{
         display: none;
     }

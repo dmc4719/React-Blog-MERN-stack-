@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {Redirect} from 'react-router-dom'
-import {adminlogin} from './../store/actions/adminActions'
-import './../App.css'
+import {adminlogin} from '../store/actions/adminActions'
+import './logReg.css'
  
-export class adminLogin extends Component {
+export class AdminLogin extends Component {
     constructor(props) {
         super(props)
     
@@ -44,14 +44,19 @@ export class adminLogin extends Component {
         }
        
         return (
-            <div className="d-log container">
-                <h2 className="m-2 col-md-4">Admin Sign In</h2>
-                <form className="" onSubmit={this.onSubmit}>
-                    <input name="email" placeholder="email" className="form-control m-2 " onChange={this.inputChangeHandler}/>
-                    <input name="pass" placeholder="pass" className="form-control m-2 " onChange={this.inputChangeHandler}/>
-                    <button type="submit" className="btn btn-outline-primary m-2 ">Login</button>
-                </form>
+            <div className=" cont "  >
+            <div className="d-log">
+            <h2 className="m-2 ">Admin sign in</h2>
+            
+                <input name="email" placeholder="Email" className="form-control m-2 "   onChange={this.inputChangeHandler}/>
+                
+                <input name="pass" placeholder="Password" className="form-control m-2 " onChange={this.inputChangeHandler}/>
+
+                <a href="#" onClick={this.onSubmit} style={{marginTop: "20px"}} href="" className="login-btn">Login</a>
             </div>
+            
+            
+        </div>
         )
     }
 }
@@ -59,4 +64,4 @@ export class adminLogin extends Component {
 const mapStateToProps = state => ({
     admin : state.admin
 })
-export default connect(mapStateToProps,{adminlogin})(adminLogin)
+export default connect(mapStateToProps,{adminlogin})(AdminLogin)

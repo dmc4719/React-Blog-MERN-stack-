@@ -48,7 +48,7 @@ export class View_Posts extends Component {
 
 
     initSocket = ()=> {
-    
+        console.log(socket)
         socket.on('posts',posts =>{
             console.log(posts)
             
@@ -83,8 +83,8 @@ export class View_Posts extends Component {
 
             pp = posts.map((post)=><div key={post._id} className="post ">
            
-            <div class="thumbnail"><img className="p-img"  src={ `${Url}/${post.image}`} alt="nothing"/></div>
-            <div class="blog">
+            <div className="thumbnail"><img className="p-img"  src={ `${Url}/${post.image}`} alt="nothing"/></div>
+            <div className="blog">
             <div className="post-title ">
                 <Link style={{textDecoration:"none"}} to={'/posts/' + post._id}><h5 style={{cursor:"pointer",display: "inline",}} className="title" >{post.title}</h5></Link>
 

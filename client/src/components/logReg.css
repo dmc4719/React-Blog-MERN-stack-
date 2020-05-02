@@ -7,6 +7,7 @@
     height: 80vh;
     background-color: white;
     padding: 100px;
+   
 }
 
 
@@ -20,7 +21,7 @@
     align-items: center;
     justify-content: center;
     color: darkslategray;
- 
+    
     height: 500px;
     /* z-index: 2; */
     
@@ -33,41 +34,8 @@
 .d-log > input {
     width: 300px;
 }
- .d-log > button {
-    color: darkslateblue !important;
-}
 
-.auth:hover{
-    background-color: darkslateblue;
-}
-.buttons >.active {
-    background-color: darkslateblue;
-}
 
-.buttons{
-    margin-bottom: 20px;
-    
-}
-
-.btn-outline-danger:hover {
-    color: white !important;
-}
-
-.buttons button{
-    color: white;
-    background-color: dodgerblue;
-    padding: 5px 25px;
-    
-    
-}
-.S-in{
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-}
-.S-up{
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-}
 
 
 

@@ -8,6 +8,7 @@ import store from './store'
 import jwtDecode from 'jwt-decode'
 import * as Types from './store/actions/types'
 import setAuthToken from './utils/setAuthToken'
+import setAdminToken from './utils/setAdminToken'
 
 
 
@@ -29,8 +30,8 @@ if(token){
 const admintoken = localStorage.getItem('admin_token')
 if(admintoken){
     let decode = jwtDecode(admintoken)
-   
-    setAuthToken(token)
+   console.log(admintoken,decode)
+    setAdminToken(admintoken)
     store.dispatch({
         type: Types.SET_ADMIN,
         payload: {

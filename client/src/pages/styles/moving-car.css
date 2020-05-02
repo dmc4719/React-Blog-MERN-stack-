@@ -14,7 +14,7 @@
     border-top-right-radius: 1000px;
     border-bottom-right-radius: 1000px;
     border: none;
-    background-image: url(./assets/Img_1.png);
+    background-image: url(./../assets/Img_1.png);
     background-size: cover;
     background-repeat: no-repeat;
     overflow-x: hidden;
@@ -24,7 +24,7 @@
 }
 
 .surface{
-    background-image: url(./assets/Img_02.png);
+    background-image: url(./../assets/Img_02.png);
     background-repeat: repeat-x;
     height:140px;
     width:2000%;
@@ -85,7 +85,7 @@
     }
     
     .car{
-        bottom: 12%;
+        bottom: 22%;
     }
  
    
