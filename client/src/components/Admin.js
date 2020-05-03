@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import {adminlogin} from '../store/actions/adminActions'
 import './logReg.css'
  
-export class AdminLogin extends Component {
+export class Admin extends Component {
     constructor(props) {
         super(props)
     
@@ -64,4 +64,4 @@ export class AdminLogin extends Component {
 const mapStateToProps = state => ({
     admin : state.admin
 })
-export default connect(mapStateToProps,{adminlogin})(AdminLogin)
+export default connect(mapStateToProps,{adminlogin})(Admin)
