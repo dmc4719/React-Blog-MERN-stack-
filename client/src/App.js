@@ -6,7 +6,7 @@ import Register from './components/Register'
 import Landing from './pages/Landing'
 import CreatePosts from './pages/Blog/Create_Posts'
 import Posts from './pages/Blog/View_Posts'
-import  AdminLogin  from './components/AdminLogin';
+import AdminLogin  from './components/AdminLogin';
 import AdminHome  from './pages/AdminHome';
 import View_Single from './pages/Blog/View_Single';
 import Footer from './components/UI/Footer';
