@@ -58,7 +58,8 @@ export class Create_Posts extends Component {
         formData.append('postImage', this.state.postImage)
         Axios.post("/api/auth/posts/upload_post_image",formData,{})
         .then(json=> {
-            image = json.data.postImage
+            var replaceStr = "\\"
+            image = json.data.postImage.replace(/\//g,replaceStr)
             this.props.create_Post({title,content,image},this.props.history,this.props.auth.user)
         })
 

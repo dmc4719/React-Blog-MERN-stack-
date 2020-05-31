@@ -58,7 +58,9 @@ constructor(props) {
             formData.append('userImage', userImage)
             Axios.post("/api/auth/upload_user_image",formData,{})
             .then(json=> {
-                image = json.data.userImage
+                
+                var replaceStr = "\\"
+                image = json.data.userImage.replace(/\//g,replaceStr)
                 this.props.register({name,email,pass,image},this.props.history)
             })
         }
